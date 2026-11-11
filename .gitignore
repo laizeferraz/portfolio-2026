@@ -43,5 +43,7 @@ next-env.d.ts
 # vs code
 .vscode/*
 
+# claude code (local preview config)
+.claude/launch.json
 # claude
 .claude/*

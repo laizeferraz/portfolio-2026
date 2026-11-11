@@ -419,6 +419,7 @@ Display settings is a signature feature ("These really work — accessibility is
 - Work on **one task at a time**, matching a card on her Notion "MVP Launch Board". Keep each change small enough to review in one sitting.
 - Explain what you changed and why in plain language. Point out any accessibility or performance trade-off, and anywhere you departed from the design.
 - Ask before committing, pushing, deleting files or changing the deploy setup.
+- **Branches and PRs:** branch each task off `dev` (e.g. `feature/<short-name>`) and open its PR against `dev` (`gh pr create --base dev`). Never open a PR against `main` or merge into it.
 - If a request conflicts with this file (for example, it would break WCAG 2.2 AA), say so and suggest an alternative.
 
 ## Definition of done
