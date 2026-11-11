@@ -3,7 +3,7 @@
 This file tells Claude Code how to build and change this repo. Read it at the start of every session and follow it over your own defaults.
 
 ## Project rules
-- Tailwind CSS v4 — config lives in globals.css under @theme, do NOT create tailwind.config.ts
+- Tailwind CSS v4.3 — no tailwind.config.ts. Tokens, `@theme`, `@custom-variant motion-ok` and base styles all live in `globals.css`. Don't define tokens anywhere else.
 - Server Components by default; "use client" only at the leaf that needs it
 - Run `npm run build` before saying a change is done 
 
@@ -203,7 +203,8 @@ Section H2s are small uppercase labels in `accentText`. Card titles and roles ar
 
 ### Reference files
 
-`design/` holds the exported Option D files:
+`design/` holds the design reference and the exported Option D files:
+- `DESIGN.md`: @design/DESIGN.md. Components, type scale, spacing, motion and the accessibility fixes. Read the matching section before building a component.
 - `Main.dc.html`: home, light, desktop
 - `ClearDark…`: home, dark
 - `Case.dc.html`: the shared story template and all story data
@@ -212,14 +213,15 @@ Read them for layout, spacing, illustrations, demo behaviour and copy. Don't cop
 
 ### Tokens
 
-Define these once as CSS variables, switched by `[data-theme="dark"]`, and expose them to Tailwind. Never hard-code hex values in components.
+They're already defined in `globals.css` (CSS variables switched by `[data-theme="dark"]`, exposed to Tailwind as `bg-card`, `text-muted`, `bg-lav`, `text-mint-ink`…). That file is the source of truth; this table mirrors it. Never hard-code hex values in components.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
 | `bg` | #FCFAFF | #16131E | Page background |
 | `card` | #FFFFFF | #211D2C | Cards, hover background |
-| `line` | #E9E3F5 | #2F2A3D | Borders, dividers |
-| `chip` | #F1ECFC | #2C2639 | Tags, toggle track |
+| `line` | #E9E3F5 | #2F2A3D | Decorative dividers only (1.2:1, not enough for controls) |
+| `line-strong` | #857D9E | #8A82A3 | Control borders, toggle track when off (3:1+, WCAG 1.4.11) |
+| `chip` | #F1ECFC | #2C2639 | Tags, inline code, lesson boxes |
 | `ink` | #2B2540 | #EEEAF7 | Headings, main text |
 | `muted` | #5A5470 | #B6AECB | Paragraphs, meta lines |
 | `accent` | #6F4FD6 | #B9A6F2 | Primary buttons, toggle on |
@@ -233,7 +235,7 @@ Define these once as CSS variables, switched by `[data-theme="dark"]`, and expos
 | `mint` / `mint-ink` | #D6F5E8 / #1E4D3A | #1C3329 / #A8E6C6 | Letmeask panel, Impact panel, PALO IT badge |
 | `ok-bg` / `ok-ink` | #D6F5E8 / #1E4D3A | #1C3329 / #A8E6C6 | Correct-answer feedback |
 | `no-bg` / `no-ink` | #FFE1D3 / #7A2E12 | #3A2620 / #FFC2AE | Wrong-answer feedback |
-| `focus` | #8B6CF0 | #8B6CF0 | Focus ring (check it on dark) |
+| `focus` | #8B6CF0 | #8B6CF0 | Focus ring (checked: 3.2:1 or more on every light and dark surface) |
 
 - Pastels are backgrounds only. Text on them uses `ink`, `muted` or the matching `-ink`.
 - The DanceFit preview colours (Direction 1: white, #5E1636 and pink #C2306A; Direction 2: #1E1B26, #FFF6D6 and yellow #FFD24A) belong to the demo. Keep them inside that component.
@@ -264,6 +266,10 @@ Minimal:
 
 There are no looping animations. Keep it that way: it avoids WCAG 2.2.2.
 
+- Write all motion with the `motion-ok:` variant (`motion-ok:animate-rise`, `motion-ok:transition`). It only applies when the OS allows motion and the Reduce motion setting is off.
+- Never use `!important`. `globals.css` has an unlayered safety net that stops stray motion without it.
+- Keep motion in classes, not inline `style`.
+
 ## Accessibility: WCAG 2.2 AA (required, not optional)
 
 Treat any failure as a bug that blocks the task.
@@ -272,11 +278,11 @@ Treat any failure as a bug that blocks the task.
 
 Display settings is a signature feature ("These really work — accessibility is how I build, not a checkbox"). Build it carefully: it's the thing interviewers will try.
 
-- **The disclosure:** a `<button aria-expanded>` labelled "Display settings", with a count badge such as "2 on". It opens a `role="group"` with `aria-label="Display settings"`.
-- **Each toggle:** a `<button aria-pressed>` whose visible text is its name. The switch graphic is `aria-hidden`.
+- **The disclosure:** a `<button aria-expanded>` labelled "Display settings", bordered with `line-strong`, with a count badge such as "2 on". It opens a `role="group"` with `aria-label="Display settings"`.
+- **Each toggle:** a `<button aria-pressed>` whose visible text is its name. The switch graphic is `aria-hidden`. Track: `line-strong` when off, `accent` when on.
   1. **Dark mode:** sets `data-theme`. Defaults to `prefers-color-scheme`.
-  2. **Reduce motion:** adds a class that turns off all animation and transitions. Defaults to on when `prefers-reduced-motion: reduce`.
-  3. **Show focus order:** outlines every focusable element in the content and shows its number in the tab order.
+  2. **Reduce motion:** sets `data-motion="reduce"` on `<html>`, which turns off all animation and transitions. Defaults to on when `prefers-reduced-motion: reduce`.
+  3. **Show focus order:** sets `data-focus-map` on `<html>`, which outlines every focusable element and shows its number in the tab order (styles are in `globals.css`).
      - Use a CSS counter on `a`, `button` and checkbox labels in DOM order, as in the design.
      - The numbers are decorative (`::after` content in a pseudo-element). Make sure the DOM order matches the visual order, so the numbers are honest.
 - Save all three in `localStorage`, and apply them before first paint with a tiny inline script.
@@ -450,4 +456,4 @@ Display settings is a signature feature ("These really work — accessibility is
 ## After launch
 
 - Publish one story per sprint in the projects table order. Each one adds a new indexable page, which helps search more than polishing the home page does.
-- After a few weeks live, check Search Console for which searches bring visitors, and adjust titles and descriptions to match.  
+- After a few weeks live, check Search Console for which searches bring visitors, and adjust titles and descriptions to match.
