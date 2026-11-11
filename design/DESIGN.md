@@ -2,7 +2,7 @@
 
 **Direction:** Option D · "Clear & personal"
 **Design canvas:** https://claude.ai/artifact/9hR61xnZxC5Cwdqh4hQxBK
-**Tokens:** defined in `globals.css` (Tailwind v4.3, `@theme`). That file is the source of truth for every value below.
+**Tokens:** defined in `src/styles/tokens.css` (Tailwind v4.3, `@theme`), which `globals.css` imports. `tokens.css` is the source of truth for every value below.
 
 **How this fits with `CLAUDE.md`:** `CLAUDE.md` is the authority on content, routes, SEO, performance and how to work. This file is the authority on visual design and components. If they ever disagree, `CLAUDE.md` wins and this file gets updated.
 
@@ -124,7 +124,7 @@ Rules: use `text-wrap: balance` on headings and `text-wrap: pretty` on paragraph
 - **Interaction:** 200–250ms on hover lift, switch knob, chevron and nav bar width.
 - **No infinite loops.** No floating, spinning or twinkling.
 - **Motion is opt-in.** Write every animation and transition with the `motion-ok:` variant (`motion-ok:animate-rise`, `motion-ok:transition`). It only applies when the OS allows motion **and** the site's Reduce motion switch is off (`<html data-motion="reduce">`).
-- An unlayered safety net in `globals.css` stops any motion that skips the variant. It beats Tailwind utilities through cascade layers, so the codebase needs **no `!important`**.
+- An unlayered safety net in `tokens.css` stops any motion that skips the variant. It beats Tailwind utilities through cascade layers, so the codebase needs **no `!important`**.
 
 ---
 
@@ -136,7 +136,7 @@ Rules: use `text-wrap: balance` on headings and `text-wrap: pretty` on paragraph
 | Project story | `max-w-page` (1040) | Top bar → hero → visual panel → reading column (`max-w-reading`) → previous/next → contact |
 | About | `max-w-page` (1040) | Top bar → hero with portrait → journey timeline → How I work → Away from the keyboard → Right now → contact |
 
-**Breakpoints:** `sm` 640px, `split` 960px (custom, in `globals.css`). Use `split:` for the two-column home.
+**Breakpoints:** `sm` 640px, `split` 960px (custom, in `tokens.css`). Use `split:` for the two-column home.
 
 > **Fix (learned on the canvas):** only make the intro column sticky when the grid is actually two columns. Sticky on a stacked layout makes content scroll underneath it.
 
@@ -231,7 +231,7 @@ A `lav` `rounded-3xl` panel with a `font-display` heading, one line of text and 
 
 ## 10. Accessibility checklist (WCAG 2.2 AA)
 
-- [ ] Skip link to `#content` on every page (`.skip-link` in `globals.css`).
+- [ ] Skip link to `#content` on every page (`.skip-link` in `tokens.css`).
 - [ ] One `h1` per page; headings in order; landmarks `header`/`nav`/`main`/`footer`.
 - [ ] Every interactive element is a real `<a>` or `<button>`; touch targets ≥ 44×44px (2.5.8 asks for 24, and we go further).
 - [ ] Focus visible everywhere (3px `focus` ring, 3px offset); focus is never hidden behind the sticky column (2.4.11).

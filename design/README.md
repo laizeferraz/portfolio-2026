@@ -3,7 +3,7 @@
 Reference files for the portfolio. Nothing in this folder ships with the site.
 
 - `DESIGN.md`: the design reference (components, type, spacing, motion, accessibility). Start here.
-- `*.dc.html`: Option D exported from the Claude Design canvas *Laize Ferraz — Portfolio · Option D* (https://claude.ai/artifact/9hR61xnZxC5Cwdqh4hQxBK). Read them for layout, copy, demo behaviour and illustrations. They use the canvas's own template syntax (`{{…}}`, `sc-if`, `sc-for`, `dc-import`), so don't copy them into the app: rebuild with React, Tailwind and the tokens in `globals.css`.
+- `*.dc.html`: Option D exported from the Claude Design canvas *Laize Ferraz — Portfolio · Option D* (https://claude.ai/artifact/9hR61xnZxC5Cwdqh4hQxBK). Read them for layout, copy, demo behaviour and illustrations. They use the canvas's own template syntax (`{{…}}`, `sc-if`, `sc-for`, `dc-import`), so don't copy them into the app: rebuild with React, Tailwind and the tokens in `src/styles/tokens.css`.
 - `canvas.json`: the canvas index (board names and positions).
 
 | File | What it is |

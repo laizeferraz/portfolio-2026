@@ -3,7 +3,7 @@
 This file tells Claude Code how to build and change this repo. Read it at the start of every session and follow it over your own defaults.
 
 ## Project rules
-- Tailwind CSS v4.3 — no tailwind.config.ts. Tokens, `@theme`, `@custom-variant motion-ok` and base styles all live in `globals.css`. Don't define tokens anywhere else.
+- Tailwind CSS v4.3 — no tailwind.config.ts. Tokens, `@theme`, `@custom-variant motion-ok` and base styles all live in `src/styles/tokens.css`, imported by `globals.css` right after `@import "tailwindcss"`. Don't define tokens anywhere else.
 - Server Components by default; "use client" only at the leaf that needs it
 - Run `npm run build` before saying a change is done 
 
@@ -213,7 +213,7 @@ Read them for layout, spacing, illustrations, demo behaviour and copy. Don't cop
 
 ### Tokens
 
-They're already defined in `globals.css` (CSS variables switched by `[data-theme="dark"]`, exposed to Tailwind as `bg-card`, `text-muted`, `bg-lav`, `text-mint-ink`…). That file is the source of truth; this table mirrors it. Never hard-code hex values in components.
+They're already defined in `src/styles/tokens.css` (CSS variables switched by `[data-theme="dark"]`, exposed to Tailwind as `bg-card`, `text-muted`, `bg-lav`, `text-mint-ink`…). That file is the source of truth; this table mirrors it. Never hard-code hex values in components.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
@@ -267,7 +267,7 @@ Minimal:
 There are no looping animations. Keep it that way: it avoids WCAG 2.2.2.
 
 - Write all motion with the `motion-ok:` variant (`motion-ok:animate-rise`, `motion-ok:transition`). It only applies when the OS allows motion and the Reduce motion setting is off.
-- Never use `!important`. `globals.css` has an unlayered safety net that stops stray motion without it.
+- Never use `!important`. `tokens.css` has an unlayered safety net that stops stray motion without it.
 - Keep motion in classes, not inline `style`.
 
 ## Accessibility: WCAG 2.2 AA (required, not optional)
@@ -282,7 +282,7 @@ Display settings is a signature feature ("These really work — accessibility is
 - **Each toggle:** a `<button aria-pressed>` whose visible text is its name. The switch graphic is `aria-hidden`. Track: `line-strong` when off, `accent` when on.
   1. **Dark mode:** sets `data-theme`. Defaults to `prefers-color-scheme`.
   2. **Reduce motion:** sets `data-motion="reduce"` on `<html>`, which turns off all animation and transitions. Defaults to on when `prefers-reduced-motion: reduce`.
-  3. **Show focus order:** sets `data-focus-map` on `<html>`, which outlines every focusable element and shows its number in the tab order (styles are in `globals.css`).
+  3. **Show focus order:** sets `data-focus-map` on `<html>`, which outlines every focusable element and shows its number in the tab order (styles are in `tokens.css`).
      - Use a CSS counter on `a`, `button` and checkbox labels in DOM order, as in the design.
      - The numbers are decorative (`::after` content in a pseudo-element). Make sure the DOM order matches the visual order, so the numbers are honest.
 - Save all three in `localStorage`, and apply them before first paint with a tiny inline script.
