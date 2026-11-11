@@ -10,7 +10,7 @@ export const GITHUB_URL = "https://github.com/laizeferraz";
 export const RESUME_URL = "/files/laize-ferraz-resume.pdf";
 
 /**
- * File size shown next to résumé links, e.g. "120 KB".
- * Null until the updated PDF arrives (see "Waiting on me" in CLAUDE.md).
+ * File size shown next to résumé links. Update it when the PDF changes
+ * (public/files/laize-ferraz-resume.pdf, 66,563 bytes).
  */
-export const RESUME_SIZE: string | null = null;
+export const RESUME_SIZE: string | null = "65 KB";
