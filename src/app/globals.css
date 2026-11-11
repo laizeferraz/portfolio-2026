@@ -236,24 +236,46 @@
     outline-offset: 3px;
     border-radius: 6px;
   }
+}
 
-  /* Reduced motion: OS setting or the site's own switch */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+/* ------------------------------------------------------------------ */
+/* 4b. Motion: opt-in, so nothing needs overriding                      */
+/*                                                                      */
+/* Write motion with the `motion-ok:` variant:                          */
+/*   <h1 class="motion-ok:animate-rise">                                */
+/*   <a class="motion-ok:transition motion-ok:hover:-translate-y-0.5">  */
+/* It only applies when the OS allows motion AND the site's             */
+/* Reduce motion switch is off (<html data-motion="reduce">).           */
+/* ------------------------------------------------------------------ */
+@custom-variant motion-ok {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduce"]) & {
+      @slot;
     }
   }
-  :root[data-motion="reduce"] *,
-  :root[data-motion="reduce"] *::before,
-  :root[data-motion="reduce"] *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+}
+
+/*
+ * Safety net for motion that skips `motion-ok:` (third-party components,
+ * a forgotten class). These rules are deliberately left outside any
+ * @layer: unlayered styles beat Tailwind's layered utilities regardless
+ * of specificity, so no !important is needed.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
+}
+:root[data-motion="reduce"] *,
+:root[data-motion="reduce"] *::before,
+:root[data-motion="reduce"] *::after {
+  animation-duration: 0.01ms;
+  animation-iteration-count: 1;
+  transition-duration: 0.01ms;
+  scroll-behavior: auto;
 }
 
 /* ------------------------------------------------------------------ */
