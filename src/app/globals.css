@@ -1,26 +1,303 @@
-@import "tailwindcss";
+/*
+ * Laize Ferraz — Portfolio design tokens (Option D · "Clear & personal")
+ * Tailwind CSS v4. Import once from your global stylesheet:
+ *
+ *   @import "tailwindcss";
+ *   @import "./tokens.css";
+ *
+ * Fonts come from next/font in app/layout.tsx, which sets
+ * --font-young-serif, --font-figtree and --font-caveat on <html>.
+ *
+ * Theme:  <html data-theme="light|dark">   (no attribute = follow the OS)
+ * Motion: <html data-motion="reduce">       (or the OS setting)
+ * Debug:  <html data-focus-map>             (numbers every focusable element)
+ *
+ * See design/DESIGN.md for usage rules and contrast ratios.
+ */
 
+/* ------------------------------------------------------------------ */
+/* 1. Raw values: light theme (default)                                */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  /* Surfaces */
+  --lf-bg: #fcfaff;
+  --lf-surface: #ffffff;
+  --lf-chip: #f1ecfc;
+
+  /* Text */
+  --lf-ink: #2b2540;
+  --lf-ink-muted: #5a5470;
+
+  /* Lines */
+  --lf-line: #e9e3f5;          /* decorative dividers only */
+  --lf-line-strong: #857d9e;   /* control boundaries, switch tracks (3:1+) */
+
+  /* Brand accent */
+  --lf-accent: #6f4fd6;        /* filled buttons, switch "on" */
+  --lf-accent-contrast: #ffffff; /* text/icons on --lf-accent */
+  --lf-accent-text: #5b3cc4;   /* links, eyebrows, accent text on light surfaces */
+
+  /* Pastel tints (backgrounds only — never text) */
+  --lf-tint-lavender: #ede6ff;
+  --lf-tint-mint: #d6f5e8;
+  --lf-tint-peach: #ffe1d3;
+  --lf-tint-pink: #ffe0ec;
+  --lf-tint-blue: #dcebff;
+  --lf-tint-butter: #fff3c4;
+
+  /* Feedback */
+  --lf-success-bg: #d6f5e8;
+  --lf-success-ink: #1e4d3a;
+  --lf-error-bg: #ffe1d3;
+  --lf-error-ink: #7a2e12;
+  --lf-status-dot: #2e9a6a;    /* decorative, always paired with text */
+
+  /* Focus */
+  --lf-focus: #8b6cf0;
+  --lf-focus-map: #c2306a;     /* debug overlay for "Show focus order" */
+
+  /* Elevation */
+  --lf-shadow-card: 0 1px 0 #ede8f7, 0 18px 36px -24px rgb(60 40 110 / 0.35);
+  --lf-shadow-pop: 0 10px 24px -14px rgb(60 40 110 / 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ------------------------------------------------------------------ */
+/* 2. Dark theme: explicit choice, or OS preference with no choice      */
+/* ------------------------------------------------------------------ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --lf-bg: #16131e;
+  --lf-surface: #211d2c;
+  --lf-chip: #2c2639;
+  --lf-ink: #eeeaf7;
+  --lf-ink-muted: #b6aecb;
+  --lf-line: #2f2a3d;
+  --lf-line-strong: #8a82a3;
+  --lf-accent: #b9a6f2;
+  --lf-accent-contrast: #17141f;
+  --lf-accent-text: #c9b9ff;
+  --lf-tint-lavender: #2a2340;
+  --lf-tint-mint: #1c3329;
+  --lf-tint-peach: #3a2620;
+  --lf-tint-pink: #3a2030;
+  --lf-tint-blue: #1d2a3d;
+  --lf-tint-butter: #36301a;
+  --lf-success-bg: #1c3329;
+  --lf-success-ink: #a8e6c6;
+  --lf-error-bg: #3a2620;
+  --lf-error-ink: #ffc2ae;
+  --lf-status-dot: #4cc28e;
+  --lf-shadow-card: 0 18px 36px -24px rgb(0 0 0 / 0.7);
+  --lf-shadow-pop: 0 10px 24px -14px rgb(0 0 0 / 0.7);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --lf-bg: #16131e;
+    --lf-surface: #211d2c;
+    --lf-chip: #2c2639;
+    --lf-ink: #eeeaf7;
+    --lf-ink-muted: #b6aecb;
+    --lf-line: #2f2a3d;
+    --lf-line-strong: #8a82a3;
+    --lf-accent: #b9a6f2;
+    --lf-accent-contrast: #17141f;
+    --lf-accent-text: #c9b9ff;
+    --lf-tint-lavender: #2a2340;
+    --lf-tint-mint: #1c3329;
+    --lf-tint-peach: #3a2620;
+    --lf-tint-pink: #3a2030;
+    --lf-tint-blue: #1d2a3d;
+    --lf-tint-butter: #36301a;
+    --lf-success-bg: #1c3329;
+    --lf-success-ink: #a8e6c6;
+    --lf-error-bg: #3a2620;
+    --lf-error-ink: #ffc2ae;
+    --lf-status-dot: #4cc28e;
+    --lf-shadow-card: 0 18px 36px -24px rgb(0 0 0 / 0.7);
+    --lf-shadow-pop: 0 10px 24px -14px rgb(0 0 0 / 0.7);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------------ */
+/* 3. Tailwind theme: utilities such as bg-surface, text-ink-muted,     */
+/*    border-line-strong, bg-tint-mint, font-display, text-display-xl,  */
+/*    rounded-2xl, shadow-card, ease-soft, max-w-reading, split:grid    */
+/* ------------------------------------------------------------------ */
+@theme inline {
+  /* Colours */
+  --color-bg: var(--lf-bg);
+  --color-surface: var(--lf-surface);
+  --color-chip: var(--lf-chip);
+  --color-ink: var(--lf-ink);
+  --color-ink-muted: var(--lf-ink-muted);
+  --color-line: var(--lf-line);
+  --color-line-strong: var(--lf-line-strong);
+  --color-accent: var(--lf-accent);
+  --color-accent-contrast: var(--lf-accent-contrast);
+  --color-accent-text: var(--lf-accent-text);
+  --color-tint-lavender: var(--lf-tint-lavender);
+  --color-tint-mint: var(--lf-tint-mint);
+  --color-tint-peach: var(--lf-tint-peach);
+  --color-tint-pink: var(--lf-tint-pink);
+  --color-tint-blue: var(--lf-tint-blue);
+  --color-tint-butter: var(--lf-tint-butter);
+  --color-success-bg: var(--lf-success-bg);
+  --color-success-ink: var(--lf-success-ink);
+  --color-error-bg: var(--lf-error-bg);
+  --color-error-ink: var(--lf-error-ink);
+  --color-status-dot: var(--lf-status-dot);
+  --color-focus: var(--lf-focus);
+
+  /* Fonts (variables set by next/font) */
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-young-serif), Georgia, serif;
+  --font-hand: var(--font-caveat), cursive;
+
+  /* Shadows */
+  --shadow-card: var(--lf-shadow-card);
+  --shadow-pop: var(--lf-shadow-pop);
+}
+
+@theme {
+  /* Type scale (rem at 16px root). Display sizes are fluid. */
+  --text-display-xl: clamp(2.25rem, 1.6rem + 2.4vw, 3.625rem);   /* 36→58  page titles */
+  --text-display-xl--line-height: 1.08;
+  --text-display-xl--letter-spacing: -0.015em;
+  --text-display-lg: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);     /* 28→40  page section titles */
+  --text-display-lg--line-height: 1.15;
+  --text-display-md: clamp(1.625rem, 1.4rem + 0.8vw, 2.125rem);  /* 26→34  story section titles */
+  --text-display-md--line-height: 1.2;
+  --text-display-sm: 1.5rem;                                      /* 24     card & stage titles */
+  --text-display-sm--line-height: 1.2;
+  --text-lead: clamp(1.125rem, 1rem + 0.4vw, 1.3125rem);         /* 18→21  intros */
+  --text-lead--line-height: 1.55;
+  --text-lg: 1.25rem;          /* 20  role line */
+  --text-lg--line-height: 1.3;
+  --text-base: 1.0625rem;      /* 17  body */
+  --text-base--line-height: 1.65;
+  --text-md: 1rem;             /* 16  card body */
+  --text-md--line-height: 1.6;
+  --text-sm: 0.9375rem;        /* 15  buttons, secondary text */
+  --text-sm--line-height: 1.5;
+  --text-xs: 0.8125rem;        /* 13  eyebrows, chips, dates */
+  --text-xs--line-height: 1.4;
+
+  --tracking-eyebrow: 0.12em;
+  --tracking-label: 0.08em;
+
+  /* Radii */
+  --radius-sm: 0.375rem;   /* 6   inline code */
+  --radius-md: 0.75rem;    /* 12  feedback messages */
+  --radius-lg: 1rem;       /* 16  demo inner frames */
+  --radius-xl: 1.25rem;    /* 20  cards */
+  --radius-2xl: 1.5rem;    /* 24  panels, impact box */
+  --radius-3xl: 1.75rem;   /* 28  pastel panels, contact block */
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --animate-rise: lf-rise 0.8s var(--ease-soft) both;
+
+  /* Layout */
+  --container-home: 75rem;     /* 1200 two-column home */
+  --container-page: 65rem;     /* 1040 story & about pages */
+  --container-reading: 47.5rem;/* 760  long-form text */
+  --container-sidebar: 22.5rem;/* 360  home intro column */
+  --breakpoint-split: 60rem;   /* 960  home becomes two columns */
+
+  @keyframes lf-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 4. Base behaviour                                                    */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    background-color: var(--lf-bg);
+    color: var(--lf-ink);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+  }
+
+  :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 3px solid var(--lf-focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Reduced motion: OS setting or the site's own switch */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  :root[data-motion="reduce"] *,
+  :root[data-motion="reduce"] *::before,
+  :root[data-motion="reduce"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 5. Small shared pieces                                               */
+/* ------------------------------------------------------------------ */
+@layer components {
+  /* Skip link: hidden until focused */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -5rem;
+    z-index: 50;
+    padding: 0.625rem 1rem;
+    border-radius: 999px;
+    background: var(--lf-ink);
+    color: var(--lf-bg);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 1rem; }
+
+  /* "Show focus order" debug overlay — numbers follow DOM (= tab) order */
+  :root[data-focus-map] body { counter-reset: lf-tab; }
+  :root[data-focus-map] :is(a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])) {
+    position: relative;
+    outline: 2px dashed var(--lf-focus-map);
+    outline-offset: 2px;
+  }
+  :root[data-focus-map] :is(a[href], button)::after {
+    counter-increment: lf-tab;
+    content: counter(lf-tab);
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    z-index: 40;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 999px;
+    background: var(--lf-focus-map);
+    color: #fff;
+    font: 700 11px/22px var(--font-sans);
+    text-align: center;
+    pointer-events: none;
+  }
 }
