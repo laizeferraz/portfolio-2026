@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Laize Ferraz — Project story</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@keyframes lfRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.lf-rise{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) both}
+.lf-rise2{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) .12s both}
+.lf-btn{transition:transform .2s}
+.lf-btn:hover{transform:translateY(-2px)}
+.lf-root a:focus-visible,.lf-root button:focus-visible{outline:3px solid #8B6CF0;outline-offset:3px;border-radius:6px}
+.lf-skip{position:absolute;left:16px;top:-80px;z-index:10;padding:10px 16px;border-radius:999px;background:#2B2540;color:#FFFFFF;font-weight:600;text-decoration:none}
+.lf-skip:focus{top:16px}
+.lf-still *,.lf-still *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion: reduce){.lf-root *{animation:none!important;transition:none!important}}
+.lf-focusmap{counter-reset:lftab}
+.lf-focusmap a,.lf-focusmap button{position:relative;outline:2px dashed #C2306A;outline-offset:2px}
+.lf-focusmap a::after,.lf-focusmap button::after{counter-increment:lftab;content:counter(lftab);position:absolute;top:-11px;right:-11px;min-width:22px;height:22px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:#C2306A;color:#FFFFFF;font:700 11px/22px Figtree,sans-serif;text-align:center;z-index:3;pointer-events:none}
+</style>
+</helmet>
+<div class="lf-root {{rootClass}}" style="position: relative; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased">
+<a href="#story" class="lf-skip">Skip to content</a>
+
+<!-- TOP BAR -->
+<header style="max-width: 1040px; margin: 0 auto; padding: 20px clamp(20px, 5vw, 48px) 0; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px 24px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: {{t.ink}}; text-decoration: none; font-weight: 600">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+<span><span style="font-family: 'Young Serif', Georgia, serif; font-weight: 400">Laize Ferraz</span><span style="color: {{t.muted}}"> · All work</span></span>
+</a>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+<button type="button" aria-expanded="{{ prefsExpanded }}" onClick="{{ togglePrefs }}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 14px; border-radius: 999px; border: 1.5px solid {{t.line}}; background: transparent; color: {{t.ink}}; font: 600 14.5px 'Figtree', sans-serif; cursor: pointer">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"></path><circle cx="16" cy="6" r="2"></circle><path d="M4 12h4"></path><path d="M12 12h8"></path><circle cx="10" cy="12" r="2"></circle><path d="M4 18h12"></path><circle cx="18" cy="18" r="2"></circle></svg>
+<span>Display settings</span>
+<sc-if value="{{ anyOn }}" hint-placeholder-val="{{ false }}"><span style="padding: 0 8px; border-radius: 999px; background: {{t.accent}}; color: {{t.accentInk}}; font-size: 12px; font-weight: 700; line-height: 20px">{{ onCount }} on</span></sc-if>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ chevronDeg }}); transition: transform .2s"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ prefsOpen }}" hint-placeholder-val="{{ false }}">
+<div role="group" aria-label="Display settings" style="width: 260px; padding: 4px; display: flex; flex-direction: column">
+<sc-for list="{{ toggles }}" as="tg" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ tg.pressed }}" onClick="{{ tg.toggle }}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 44px; padding: 0 4px; border: 0; background: transparent; color: {{t.ink}}; font: 500 15px 'Figtree', sans-serif; cursor: pointer; text-align: left">
+<span>{{ tg.label }}</span>
+<span aria-hidden="true" style="flex: none; display: flex; justify-content: {{ tg.knobSide }}; width: 42px; height: 24px; padding: 3px; box-sizing: border-box; border-radius: 999px; background: {{ tg.trackBg }}"><span style="width: 18px; height: 18px; border-radius: 50%; background: {{ tg.knobBg }}; box-shadow: 0 1px 3px rgba(0,0,0,.2)"></span></span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</header>
+
+<main id="story" style="max-width: 1040px; margin: 0 auto; padding: clamp(32px, 5vw, 64px) clamp(20px, 5vw, 48px) 48px; display: flex; flex-direction: column; gap: clamp(56px, 7vw, 88px)">
+
+<!-- HERO -->
+<section aria-labelledby="story-title" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<p class="lf-rise" style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: {{t.accentText}}">{{ p.eyebrow }}</p>
+<h1 id="story-title" class="lf-rise" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 58px); line-height: 1.08; letter-spacing: -0.015em; text-wrap: balance">{{ p.title }}</h1>
+<p class="lf-rise2" style="margin: 0; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.55; color: {{t.muted}}; text-wrap: pretty">{{ p.summary }}</p>
+</div>
+
+<dl class="lf-rise2" style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 0; border-top: 1px solid {{t.line}}; border-bottom: 1px solid {{t.line}}">
+<sc-for list="{{ p.facts }}" as="f" hint-placeholder-count="4">
+<div style="padding: 16px 16px 16px 0; display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{t.muted}}">{{ f.k }}</dt>
+<dd style="margin: 0; font-size: 16px; font-weight: 600; line-height: 1.45">{{ f.v }}</dd>
+</div>
+</sc-for>
+</dl>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px">
+<sc-for list="{{ p.actions }}" as="ac" hint-placeholder-count="1">
+<a href="{{ ac.href }}" class="lf-btn" style="display: inline-flex; align-items: center; gap: 10px; min-height: 50px; box-sizing: border-box; padding: 0 24px; border-radius: 999px; background: {{ ac.bg }}; color: {{ ac.ink }}; box-shadow: inset 0 0 0 1.5px {{ ac.ring }}; text-decoration: none; font-weight: 700">{{ ac.label }} <span aria-hidden="true">↗</span></a>
+</sc-for>
+<sc-if value="{{ hasNote }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: {{t.muted}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg>{{ p.note }}</p>
+</sc-if>
+</div>
+</section>
+
+<!-- VISUAL PANEL -->
+<section aria-label="{{ panelLabel }}" style="padding: clamp(20px, 3.5vw, 40px); border-radius: 28px; background: {{ panelBg }}; display: flex; flex-direction: column; gap: 16px">
+
+<sc-if value="{{ isGrok }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center">
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: {{t.muted}}"><span>&lt;grok-chat-bubble&gt;</span><span style="padding: 2px 10px; border-radius: 999px; background: {{t.card}}; color: {{t.ink}}">Try it</span></div>
+<div role="group" aria-labelledby="grok-q" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; gap: 10px; align-items: flex-end">
+<span aria-hidden="true" style="flex: none; width: 30px; height: 30px; border-radius: 50%; background: #2B2540; color: #FFFFFF; display: grid; place-items: center; font-size: 12px; font-weight: 700">T</span>
+<p id="grok-q" style="margin: 0; padding: 12px 14px; border-radius: 16px 16px 16px 4px; background: {{t.card}}; font-size: 15px; line-height: 1.45">What will <code style="font-family: ui-monospace, monospace; font-size: 13.5px; padding: 1px 5px; border-radius: 4px; background: {{t.chip}}">print(3 * "ha")</code> output?</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end">
+<sc-for list="{{ answers }}" as="a" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ a.pressed }}" onClick="{{ a.pick }}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid {{ a.border }}; background: {{ a.bg }}; color: {{ a.ink }}; font: 600 15px 'Figtree', sans-serif; cursor: pointer">{{ a.label }}</button>
+</sc-for>
+</div>
+<div role="status" aria-live="polite">
+<sc-if value="{{ hasFeedback }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 12px 14px; border-radius: 12px; background: {{ feedbackBg }}; color: {{ feedbackInk }}; font-size: 14.5px; font-weight: 600; line-height: 1.45">{{ feedback }}</p>
+</sc-if>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-size: 22px; line-height: 1.25">A taste of the library</p>
+<p style="margin: 0; font-size: 15.5px; color: {{t.muted}}">This chat bubble and feedback pair is the kind of component educators used to build lessons. Every component in the real library is documented and playable in Storybook.</p>
+<a href="https://groklearning.github.io/grok-web-components/" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">Explore every component in Storybook <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDance }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div role="group" aria-label="Choose a design direction" style="display: flex; gap: 8px">
+<sc-for list="{{ dirs }}" as="d" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{ d.pressed }}" onClick="{{ d.pick }}" style="flex: 1; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1.5px solid {{ d.border }}; background: {{ d.bg }}; color: {{ d.ink }}; font: 600 15px 'Figtree', sans-serif; cursor: pointer">{{ d.label }}</button>
+</sc-for>
+</div>
+<div role="img" aria-label="{{ preview.alt }}" style="min-height: 220px; padding: 28px; border-radius: 18px; background: {{ preview.bg }}; color: {{ preview.ink }}; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; transition: background-color .3s, color .3s">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: .8">Sunshine Coast</span>
+<span style="font-family: {{ preview.font }}; font-weight: 700; font-size: 40px; line-height: 1.05">DanceFit</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><span style="padding: 8px 16px; border-radius: 999px; background: {{ preview.btnBg }}; color: {{ preview.btnInk }}; font-size: 14px; font-weight: 700">Book a class</span><span style="font-size: 13.5px; font-weight: 600">Newcomer offer</span></div>
+</div>
+</div>
+<div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-size: 22px; line-height: 1.25">Two directions, one site</p>
+<p style="margin: 0; font-size: 15.5px; color: {{t.muted}}">I designed two directions for the client to compare before building. Swap these stand-ins for screenshots of the real directions.</p>
+<a href="https://dancefitsunshinecoast.com" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">See the finished site <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlaceholder }}" hint-placeholder-val="{{ false }}">
+<div style="min-height: 280px; border-radius: 18px; border: 2px dashed {{t.accent}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 28px; text-align: center">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="{{t.accentText}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="m21 16-5-5-9 9"></path></svg>
+<p style="margin: 0; font-weight: 700">{{ p.placeholderTitle }}</p>
+<p style="margin: 0; max-width: 460px; font-size: 15px; color: {{t.muted}}">{{ p.placeholderText }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}">
+<div style="padding: 16px 20px; border-radius: 16px; border: 2px dashed {{t.accent}}; display: flex; align-items: center; gap: 12px; font-size: 15px; color: {{t.muted}}">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="m10 9 5 3-5 3z"></path></svg>
+<span>{{ p.media }}</span>
+</div>
+</sc-if>
+</section>
+
+<!-- STORY BODY -->
+<div style="display: flex; flex-direction: column; gap: clamp(56px, 7vw, 80px); max-width: 760px">
+
+<section aria-labelledby="ov-h" style="display: flex; flex-direction: column; gap: 14px">
+<h2 id="ov-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2">{{ p.overviewTitle }}</h2>
+<sc-for list="{{ p.overview }}" as="para" hint-placeholder-count="2">
+<p style="margin: 0; color: {{t.muted}}; text-wrap: pretty">{{ para }}</p>
+</sc-for>
+</section>
+
+<sc-if value="{{ hasSteps }}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="steps-h" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="steps-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2">How it works</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+<li style="display: flex; gap: 16px; align-items: flex-start">
+<span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; background: {{ st.dot }}; color: {{t.ink}}; display: grid; place-items: center; font-family: 'Young Serif', serif; font-size: 15px">{{ st.n }}</span>
+<p style="margin: 4px 0 0"><strong style="font-weight: 700">{{ st.title }}</strong> <span style="color: {{t.muted}}">{{ st.body }}</span></p>
+</li>
+</sc-for>
+</ol>
+</section>
+</sc-if>
+
+<section aria-labelledby="built-h" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="built-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2">What I built</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{ built }}" as="b" hint-placeholder-count="4">
+<div style="padding: 22px; border-radius: 20px; background: {{ b.bg }}; border: {{ b.border }}; display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-size: 17.5px; font-weight: 700; line-height: 1.35">{{ b.title }}</h3>
+<p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: {{t.muted}}">{{ b.body }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="ch-h" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="ch-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2">Challenges</h2>
+<div style="display: flex; flex-direction: column; border-top: 1px solid {{t.line}}">
+<sc-for list="{{ challenges }}" as="c" hint-placeholder-count="3">
+<div style="padding: 18px 0; border-bottom: 1px solid {{t.line}}; display: flex; flex-wrap: wrap; gap: 4px 28px">
+<h3 style="flex: 1 1 200px; margin: 0; font-size: 16.5px; font-weight: 700; line-height: 1.45">{{ c.title }}</h3>
+<p style="flex: 2 1 360px; margin: 0; font-size: 15.5px; color: {{ c.ink }}">{{ c.body }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="imp-h" style="padding: clamp(24px, 3.5vw, 36px); border-radius: 24px; background: {{t.mint}}; display: flex; flex-direction: column; gap: 14px">
+<h2 id="imp-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.2; color: {{t.mintInk}}">Impact</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ impact }}" as="im" hint-placeholder-count="3">
+<li style="display: flex; gap: 12px; align-items: flex-start"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.mintInk}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><path d="M20 6 9 17l-5-5"></path></svg><span style="color: {{ im.ink }}">{{ im.text }}</span></li>
+</sc-for>
+</ul>
+</section>
+
+<sc-if value="{{ hasProud }}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="proud-h" style="display: flex; flex-direction: column; gap: 12px">
+<h2 id="proud-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2">What I'm proudest of</h2>
+<sc-for list="{{ p.proud }}" as="pr" hint-placeholder-count="2">
+<p style="margin: 0; color: {{t.muted}}; text-wrap: pretty">{{ pr }}</p>
+</sc-for>
+</section>
+</sc-if>
+
+<section aria-labelledby="tech-h" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="tech-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2">Tech &amp; ways of working</h2>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{ p.tech }}" as="tg2" hint-placeholder-count="3">
+<div style="display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: baseline">
+<dt style="flex: 0 0 150px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: {{t.muted}}">{{ tg2.group }}</dt>
+<dd style="flex: 1 1 300px; margin: 0; display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{ tg2.items }}" as="it" hint-placeholder-count="3"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13.5px; font-weight: 600">{{ it }}</span></sc-for>
+</dd>
+</div>
+</sc-for>
+</dl>
+</section>
+</div>
+
+<!-- NEXT / PREVIOUS -->
+<nav aria-label="More projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 14px">
+<a href="{{ p.prev.href }}" style="padding: 22px 24px; border-radius: 20px; background: {{t.card}}; border: 1px solid {{t.line}}; color: {{t.ink}}; text-decoration: none; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{t.muted}}">← Previous project</span>
+<span style="font-family: 'Young Serif', Georgia, serif; font-size: 20px; line-height: 1.3">{{ p.prev.title }}</span>
+</a>
+<a href="{{ p.next.href }}" style="padding: 22px 24px; border-radius: 20px; background: {{t.card}}; border: 1px solid {{t.line}}; color: {{t.ink}}; text-decoration: none; display: flex; flex-direction: column; gap: 4px; text-align: right">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{t.muted}}">Next project →</span>
+<span style="font-family: 'Young Serif', Georgia, serif; font-size: 20px; line-height: 1.3">{{ p.next.title }}</span>
+</a>
+</nav>
+
+<section aria-labelledby="contact-h" style="padding: clamp(28px, 4vw, 44px); border-radius: 28px; background: {{t.lav}}; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="contact-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.15">Like what you see?</h2>
+<p style="margin: 0; color: {{t.muted}}">I'm available now and happy to talk through any of this work.</p>
+</div>
+<a href="mailto:laizeferraz@gmail.com" class="lf-btn" style="display: inline-flex; align-items: center; gap: 10px; min-height: 50px; box-sizing: border-box; padding: 0 24px; border-radius: 999px; background: {{t.accent}}; color: {{t.accentInk}}; text-decoration: none; font-weight: 700">laizeferraz@gmail.com <span aria-hidden="true">→</span></a>
+</section>
+
+<footer style="font-size: 14px; color: {{t.muted}}">Designed and built by Laize Ferraz with Next.js and Tailwind CSS, to meet WCAG 2.2 AA.</footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"project":{"editor":"enum","default":"grok","options":["grok","dancefit","ceta","cyber","nft","letmeask"],"section":"Content"},"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1440,"height":4600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const dark = s.dark === undefined ? !!this.props.dark : s.dark;
+    const still = !!s.still;
+    const focusMap = !!s.focusMap;
+
+    const light = {
+      bg: '#FCFAFF', ink: '#2B2540', muted: '#5A5470', card: '#FFFFFF', line: '#E9E3F5',
+      chip: '#F1ECFC', lav: '#EDE6FF', mint: '#D6F5E8', mintInk: '#1E4D3A', peach: '#FFE1D3', pink: '#FFE0EC', blue: '#DCEBFF', butter: '#FFF3C4',
+      accent: '#6F4FD6', accentInk: '#FFFFFF', accentText: '#5B3CC4',
+      okBg: '#D6F5E8', okInk: '#1E4D3A', noBg: '#FFE1D3', noInk: '#7A2E12'
+    };
+    const darkT = {
+      bg: '#16131E', ink: '#EEEAF7', muted: '#B6AECB', card: '#211D2C', line: '#2F2A3D',
+      chip: '#2C2639', lav: '#2A2340', mint: '#1C3329', mintInk: '#A8E6C6', peach: '#3A2620', pink: '#3A2030', blue: '#1D2A3D', butter: '#36301A',
+      accent: '#B9A6F2', accentInk: '#17141F', accentText: '#C9B9FF',
+      okBg: '#1C3329', okInk: '#A8E6C6', noBg: '#3A2620', noInk: '#FFC2AE'
+    };
+    const t = dark ? darkT : light;
+
+    const LINKS = {
+      grok: { title: 'A Web Component library for 200,000+ students', href: 'Case.dc.html' },
+      dancefit: { title: 'A website for DanceFit Sunshine Coast', href: 'CaseDanceFit.dc.html' },
+      ceta: { title: 'Helping children face fears and worries', href: 'CaseCeta.dc.html' },
+      cyber: { title: 'Replacing spreadsheets for cyber insurance', href: 'CaseCyber.dc.html' },
+      nft: { title: 'A white-label NFT marketplace', href: 'CaseNft.dc.html' },
+      letmeask: { title: 'Letmeask 2.0', href: 'CaseLetmeask.dc.html' }
+    };
+    const ORDER = ['grok', 'dancefit', 'ceta', 'cyber', 'nft', 'letmeask'];
+
+    const P = {
+      grok: {
+        eyebrow: 'Grok Academy · Edtech · Oct 2023 – Aug 2024',
+        title: 'A Web Component library for 200,000+ students',
+        summary: 'The foundation of a design system that lets educators build interactive computing lessons on their own, without waiting on engineers.',
+        facts: [{ k: 'Role', v: 'Software Engineer' }, { k: 'When', v: 'Oct 2023 – Aug 2024' }, { k: 'Team', v: '[TEAM SIZE]' }, { k: 'Stack', v: 'Lit · TypeScript · Storybook' }],
+        actions: [{ label: 'Open the live Storybook', href: 'https://groklearning.github.io/grok-web-components/', primary: true }],
+        note: '',
+        panel: 'grok', panelColor: 'lav',
+        media: '[Video slot: avatar component demo — reuse grokAvatar.mp4 with captions and a visible play button]',
+        overviewTitle: 'The problem',
+        overview: [
+          "Grok Academy's computing lessons reach 200,000+ students across 3,400 Australian schools. The people writing those lessons are educators, not frontend developers.",
+          "They needed reusable building blocks that matched Grok's visual identity, and documentation they could actually use. Until then, component docs were static screenshots in Confluence."
+        ],
+        built: [
+          { title: 'Reusable components in Lit', body: "Avatar, chat bubble, progress bar and feedback elements built with Lit and TypeScript, using Shoelace as a reference and aligned with Grok's visual identity. I also managed the design system's colour palette." },
+          { title: 'Docs that write themselves', body: 'No package existed for documenting Web Components in Storybook, so I built tooling that turns JSDoc comments into Storybook docs with live previews and usage instructions.' },
+          { title: 'A playground for non-developers', body: 'FAQs and usage guides inside Storybook, so content creators could preview, configure and copy components without asking an engineer.' },
+          { title: 'Accessibility from day one', body: 'Automated WCAG tests and vision-impairment simulations in Storybook, so every component was checked for accessibility before it shipped.' },
+          { title: 'Linting outside the monorepo', body: "Custom code that extracted component details so the existing lint system could recognise and validate components developed outside the main monorepo." }
+        ],
+        challenges: [
+          { title: 'From React to Web Components', body: 'I came from React, so I learned Web Components and Lit through self-directed study while shipping real components.' },
+          { title: 'No documentation tooling', body: 'Storybook had no ready-made way to document Web Components from source, so I designed and built a JSDoc-based solution.' },
+          { title: 'A monorepo with strict linting', body: 'Getting externally developed components recognised meant feeding their details into the lint process.' }
+        ],
+        impact: [
+          'An interactive Storybook playground replaced static, screenshot-based documentation.',
+          'Content creators previewed and integrated components without a developer, shortening lesson-building cycles.',
+          '100% unit test coverage with Vitest and Open Web Components Testing, plus automated accessibility tests.'
+        ],
+        proud: [],
+        tech: [
+          { group: 'Components', items: ['Lit', 'TypeScript', 'Web Components', 'Shoelace (reference)'] },
+          { group: 'Docs', items: ['Storybook', 'JSDoc'] },
+          { group: 'Testing', items: ['Vitest', 'Open Web Components Testing', 'Automated a11y tests'] },
+          { group: 'Ways of working', items: ['Kanban', 'Jira', 'Confluence', 'GitHub'] }
+        ]
+      },
+      dancefit: {
+        eyebrow: 'Freelance · Client website · 2026',
+        title: 'A website for DanceFit Sunshine Coast',
+        summary: 'A single-page website for a local dance fitness studio, designed to turn curious newcomers into first-time dancers.',
+        facts: [{ k: 'Role', v: 'Designer & developer' }, { k: 'When', v: '2026' }, { k: 'Client', v: 'DanceFit Sunshine Coast' }, { k: 'Stack', v: 'React · TypeScript · Vite' }],
+        actions: [{ label: 'Visit the live site', href: 'https://dancefitsunshinecoast.com', primary: true }],
+        note: '',
+        panel: 'dance', panelColor: 'pink',
+        media: '',
+        overviewTitle: 'The brief',
+        overview: [
+          'DanceFit Sunshine Coast is a local dance fitness studio. [Describe what the studio needed: e.g. no website yet, relying on social media, or an old site that didn’t help people book.]',
+          'My goal was a site that feels as fun as the classes, makes it easy for newcomers to take the first step, and is simple for the owner to keep up to date.'
+        ],
+        built: [
+          { title: 'Two design directions', body: 'I designed two directions and presented them to the client, so the choice was based on what they saw, not on a description.' },
+          { title: 'A newcomer booking offer', body: 'A clear offer for first-timers, placed where new visitors decide whether to give a class a go.' },
+          { title: 'A live Instagram feed', body: 'The studio’s latest posts appear on the site automatically, so it stays fresh without manual updates.' },
+          { title: '[Accessibility and performance]', body: '[Add what you did: e.g. colour contrast, keyboard navigation, image optimisation, Lighthouse scores.]' }
+        ],
+        challenges: [
+          { title: '[Challenge 1]', body: '[e.g. Designing for a client with no design brief, or balancing a fun brand with readability.]' },
+          { title: '[Challenge 2]', body: '[e.g. Integrating the Instagram feed reliably.]' }
+        ],
+        impact: [
+          'The site is live and the client is happy to be named and linked.',
+          '[Add any results: e.g. newcomer bookings, enquiries, client feedback quote.]'
+        ],
+        proud: [],
+        tech: [
+          { group: 'Frontend', items: ['React', 'TypeScript', 'Vite', 'CSS Modules'] },
+          { group: 'Integrations', items: ['Instagram feed', '[Booking tool]'] },
+          { group: 'Process', items: ['Two design directions', 'Client review'] }
+        ]
+      },
+      ceta: {
+        eyebrow: 'PALO IT · Digital health · 2023',
+        title: 'Helping children face fears and worries',
+        summary: 'An MVP app where parents guide their children through ten modules to work through anxiety, one brave step at a time.',
+        facts: [{ k: 'Role', v: 'Software Engineer' }, { k: 'When', v: '2023' }, { k: 'Team', v: '[TEAM SIZE]' }, { k: 'Stack', v: 'Next.js · TypeScript · Tailwind' }],
+        actions: [],
+        note: 'The MVP isn’t publicly available, so this story uses illustrations instead of screenshots.',
+        panel: 'placeholder', panelColor: 'peach',
+        placeholderTitle: 'Illustration to come',
+        placeholderText: 'A soft illustration of a child and parent working through a module together. No real product screenshots, as the app is private.',
+        media: '',
+        overviewTitle: 'The problem',
+        overview: [
+          'Children with anxiety often need structured, repeated practice to face their fears, and parents are the people best placed to help them do it day to day.',
+          'Ceta turns that practice into ten interactive modules. Parents act as tutors, joining in on activities while children name their fears, set goals and celebrate progress.'
+        ],
+        built: [
+          { title: 'Ten interactive modules', body: 'Module screens and activities that parents and children complete together, built from the client design team’s Figma designs.' },
+          { title: 'Goals and progress tracking', body: 'Children name their fears, set achievable goals with their parents and see their progress over time.' },
+          { title: 'A reward system', body: 'Completing activities and modules earns points that children can redeem for predefined rewards.' },
+          { title: 'Tested components', body: 'Every component tested with Jest, with module content managed in Sanity so it could be updated without code changes.' }
+        ],
+        challenges: [
+          { title: '[Designing for two users]', body: '[e.g. Making the same flow work for a parent leading and a child taking part.]' },
+          { title: '[Sensitive subject matter]', body: '[e.g. Tone, wording and visuals that feel safe for an anxious child.]' }
+        ],
+        impact: [
+          '[Add outcomes: e.g. MVP delivered on time, client feedback, user testing results.]'
+        ],
+        proud: [],
+        tech: [
+          { group: 'Frontend', items: ['Next.js', 'TypeScript', 'Tailwind CSS'] },
+          { group: 'Testing', items: ['Jest'] },
+          { group: 'Backend & content', items: ['AWS Amplify', 'GraphQL', 'Sanity CMS'] },
+          { group: 'Ways of working', items: ['Scrum', 'Jira', 'Bitbucket', 'Figma'] }
+        ]
+      },
+      cyber: {
+        eyebrow: 'PALO IT · Insurtech · Sep 2021 – Apr 2022',
+        title: 'Replacing spreadsheets for cyber insurance',
+        summary: 'A platform where insurers and brokers quote, issue and manage cyber insurance in one place. I built its dynamic questionnaire, premium comparison table and co-insurance features.',
+        facts: [{ k: 'Role', v: 'Software Engineer' }, { k: 'Duration', v: '7 months' }, { k: 'Team', v: '4–5 engineers' }, { k: 'Client', v: 'A global cyber reinsurer' }],
+        actions: [],
+        note: 'The platform is private and the client stays anonymous, so this story uses illustrations only.',
+        panel: 'placeholder', panelColor: 'blue',
+        placeholderTitle: 'Illustration to come',
+        placeholderText: 'An illustrated premium comparison table with three coverage options side by side, and a co-insurance layers diagram.',
+        media: '',
+        overviewTitle: 'The problem',
+        overview: [
+          'A private platform for a global cyber reinsurer, used by its insurer and broker clients to run the whole cyber insurance journey in one place: assess the risk, get a premium, issue the policy and manage it afterwards.',
+          'Before it, that work lived across Excel sheets, Word documents and PDFs. I joined to help deliver a second wave of features, including co-insurance, the release stakeholders valued most.'
+        ],
+        steps: [
+          { title: 'Answer a dynamic questionnaire.', body: 'Sections and questions adapt to every answer.' },
+          { title: 'Scan the company’s website.', body: 'A URL generates a cyber risk assessment report.' },
+          { title: 'Compare premiums.', body: 'The reinsurer’s pricing engine prices up to three coverage options side by side.' },
+          { title: 'Issue the policy.', body: 'Accepted quotes become policies, shared for sign-off.' },
+          { title: 'Manage everything.', body: 'Every policy lives in one place.' }
+        ],
+        built: [
+          { title: 'A questionnaire that adapts as you answer', body: 'Conditional logic shows or hides whole sections and questions based on earlier answers, with validation rules that follow the business. Users can save progress and edit to re-quote.' },
+          { title: 'Co-insurance, end to end on the frontend', body: 'New questionnaire fields, a layers table with attachment points, limits and premiums, and each option’s share of the limit, so brokers got realistic premiums without manual adjustments.' },
+          { title: 'A premium table built for comparison', body: 'Up to three coverage options side by side, editable values that update the quote, and referral warnings when a quote exceeds the reinsurer’s approval rules.' },
+          { title: 'A print-ready risk report', body: 'I owned the print CSS for the PDF risk report: fixed layout, clean page breaks, on-brand headers, and layouts that hold up with a little data or a lot.' },
+          { title: 'A release-ready test suite', body: 'Near release, I updated the Cypress end-to-end tests to cover the new flows so the suite passed reliably again.' }
+        ],
+        challenges: [
+          { title: 'Translating insurance rules into UI', body: 'I asked the product owner a lot of questions, traced data from the pricing engine through our API to the frontend, and documented what I learned in the team wiki.' },
+          { title: 'Designing around a black box', body: 'Premiums came from the client’s own pricing engine. The UI had to present its results clearly across every combination of options, warnings and referrals.' },
+          { title: 'No designer on the team', body: 'I turned the product owner’s sketches into UI with our atomic design components, shared early previews, and proposed layout improvements for scanning dense data.' },
+          { title: 'A mixed codebase', body: 'JavaScript and TypeScript on the frontend, with a C#/.NET and Node.js backend: my first time in .NET and in a codebase this size.' }
+        ],
+        impact: [
+          'One platform replaced scattered spreadsheets, documents and PDFs for quoting and policy management.',
+          'Co-insurance removed a manual adjustment step and made premiums realistic from the start.',
+          'The client was very happy with the release.'
+        ],
+        proud: [
+          'I learned the product so deeply that I became the team’s go-to person and onboarded every new teammate, with product walkthroughs, codebase tours, pairing on first tickets and onboarding docs.',
+          'In sprint reviews, stakeholders complimented my demos: I walked through realistic quote scenarios in plain language, making complex features easy to follow.'
+        ],
+        tech: [
+          { group: 'Frontend', items: ['React', 'JavaScript', 'TypeScript', 'Styled Components', 'Atomic design'] },
+          { group: 'Backend', items: ['C#/.NET', 'Node.js', 'MongoDB'] },
+          { group: 'Testing', items: ['Cypress'] },
+          { group: 'Ways of working', items: ['Scrum', 'Azure DevOps'] }
+        ]
+      },
+      nft: {
+        eyebrow: 'PALO IT · Marketplace · 2022',
+        title: 'A white-label NFT marketplace',
+        summary: 'A themeable marketplace where brands sell exclusive NFT collections, and buyers pay by card with no cryptocurrency needed.',
+        facts: [{ k: 'Role', v: 'Software Engineer' }, { k: 'When', v: '2022' }, { k: 'Team', v: '[TEAM SIZE]' }, { k: 'Stack', v: 'React · TypeScript · Redux' }],
+        actions: [],
+        note: 'The marketplace isn’t online, so this story uses illustrations instead of screenshots.',
+        panel: 'placeholder', panelColor: 'butter',
+        placeholderTitle: 'Illustration to come',
+        placeholderText: 'An illustrated mystery box opening to reveal NFTs, next to two differently themed storefronts built from the same components.',
+        media: '',
+        overviewTitle: 'The problem',
+        overview: [
+          'Brands wanted to sell exclusive NFT collections to fans who may never have touched cryptocurrency, under their own look and feel.',
+          'The answer was one white-label marketplace that each client could theme, with card payments, single and box sales, and NFTs minted to the buyer’s wallet.'
+        ],
+        built: [
+          { title: 'Per-client theming', body: 'Themes and content switched per client using environment variables and file-name extensions, so one codebase served many brands.' },
+          { title: 'An atomic design library', body: 'Reusable, scalable components organised with atomic design and documented in Storybook, built from the design team’s Figma files.' },
+          { title: 'Card payments with Stripe', body: 'Fiat payment flows so buyers could purchase with a credit card instead of cryptocurrency.' },
+          { title: 'Boxes with a reveal', body: 'Single NFTs or mystery boxes whose contents stay hidden until opened, then minted to the owner’s wallet.' },
+          { title: 'Tested components', body: 'Unit tests for every component, with snapshot tests for the smallest atoms.' }
+        ],
+        challenges: [
+          { title: '[Theming at scale]', body: '[e.g. Keeping one codebase flexible enough for many brands without forking.]' },
+          { title: '[Explaining crypto simply]', body: '[e.g. Making wallets and minting understandable for first-time buyers.]' }
+        ],
+        impact: [
+          '[Add outcomes: e.g. number of client themes launched, collections sold, reuse of the component library.]'
+        ],
+        proud: [],
+        tech: [
+          { group: 'Frontend', items: ['React', 'TypeScript', 'Redux', 'Styled Components'] },
+          { group: 'Quality', items: ['Storybook', 'Unit & snapshot tests'] },
+          { group: 'Backend', items: ['Node.js', 'C#', 'Vendure', 'Stripe', 'Solidity'] },
+          { group: 'Ways of working', items: ['Scrum', 'Jira', 'GitHub', 'Figma'] }
+        ]
+      },
+      letmeask: {
+        eyebrow: 'Personal project · 2021, rebuilt 2023',
+        title: 'Letmeask 2.0',
+        summary: 'A web app for content creators to run organised Q&A sessions: open a room, share the code, and let the audience ask and vote.',
+        facts: [{ k: 'Role', v: 'Solo — design & build' }, { k: 'When', v: '2021 · rebuilt 2023' }, { k: 'Origin', v: 'Rocketseat Next Level Week' }, { k: 'Stack', v: 'Next.js · Firebase · Tailwind' }],
+        actions: [{ label: 'Try the live app', href: 'https://letmeask2-0.vercel.app/', primary: true }, { label: 'View the code', href: 'https://github.com/laizeferraz', primary: false }],
+        note: '',
+        panel: 'placeholder', panelColor: 'mint',
+        placeholderTitle: 'Screenshots to come',
+        placeholderText: 'Desktop and mobile screenshots of a live Q&A room, with the question being answered highlighted.',
+        media: '',
+        overviewTitle: 'Why I built it',
+        overview: [
+          'I first built Letmeask in 2021 during Rocketseat’s Next Level Week. In 2023 I rebuilt it with Next.js and Tailwind CSS to improve performance, refresh the design and add a mobile-responsive version.',
+          'Rebuilding something I already knew showed me how much my understanding of web application architecture had grown.'
+        ],
+        built: [
+          { title: 'Private Q&A rooms', body: 'Creators open a room and share its code; the audience joins with the code to keep the conversation focused.' },
+          { title: 'Question management', body: 'Creators answer, check off, like or delete questions, and highlight the one being answered right now.' },
+          { title: 'Likes that surface the best questions', body: 'Each question shows its like count, so creators can spot what the audience cares about most.' },
+          { title: 'Sign-in and read-only access', body: 'Posting and liking need a login; anonymous visitors can still follow along, and closed rooms stay readable.' }
+        ],
+        challenges: [
+          { title: 'Real-time updates', body: 'Firebase keeps every participant’s view in sync as questions arrive, get liked and get answered.' },
+          { title: '[What the rebuild taught me]', body: '[e.g. Moving from create-react-app to Next.js, or redesigning for mobile.]' }
+        ],
+        impact: [
+          'A live, working app anyone can try.',
+          'A clear before-and-after that shows how my architecture and design skills have grown.'
+        ],
+        proud: [],
+        tech: [
+          { group: 'Frontend', items: ['Next.js', 'TypeScript', 'Tailwind CSS'] },
+          { group: 'Backend', items: ['Firebase Auth', 'Firebase Realtime Database'] }
+        ]
+      }
+    };
+
+    const key = P[this.props.project] ? this.props.project : 'grok';
+    const raw = P[key];
+    const idx = ORDER.indexOf(key);
+    const prevKey = ORDER[(idx - 1 + ORDER.length) % ORDER.length];
+    const nextKey = ORDER[(idx + 1) % ORDER.length];
+    const isTodo = (str) => typeof str === 'string' && str.charAt(0) === '[';
+    const todoInk = t.accentText;
+
+    const p = Object.assign({}, raw, {
+      prev: LINKS[prevKey],
+      next: LINKS[nextKey],
+      actions: (raw.actions || []).map((a) => ({
+        label: a.label, href: a.href,
+        bg: a.primary ? t.accent : 'transparent',
+        ink: a.primary ? t.accentInk : t.ink,
+        ring: a.primary ? t.accent : t.line
+      })),
+      proud: raw.proud || []
+    });
+
+    const built = raw.built.map((b) => {
+      const todo = isTodo(b.title) || isTodo(b.body);
+      return { title: b.title, body: b.body, bg: todo ? 'transparent' : t.card, border: todo ? ('2px dashed ' + t.accent) : ('1px solid ' + t.line) };
+    });
+    const challenges = raw.challenges.map((c) => ({ title: c.title, body: c.body, ink: isTodo(c.body) ? todoInk : t.muted }));
+    const impact = raw.impact.map((x) => ({ text: x, ink: isTodo(x) ? t.okInk : t.mintInk }));
+    const dots = [t.lav, t.mint, t.peach, t.butter, t.pink];
+    const steps = (raw.steps || []).map((st, i) => ({ n: i + 1, title: st.title, body: st.body, dot: dots[i % dots.length] }));
+
+    const panelBg = t[raw.panelColor] || t.lav;
+    const panelLabel = raw.panel === 'grok' ? 'Interactive component demo' : (raw.panel === 'dance' ? 'Design directions' : 'Project visual');
+
+    const answer = s.answer || null;
+    const answers = [
+      { id: 'a', label: 'hahaha', correct: true },
+      { id: 'b', label: 'ha ha ha', correct: false },
+      { id: 'c', label: 'An error', correct: false }
+    ].map((a) => {
+      const picked = answer === a.id;
+      return {
+        id: a.id, label: a.label, correct: a.correct,
+        pressed: picked ? 'true' : 'false',
+        bg: picked ? (a.correct ? t.okBg : t.noBg) : t.card,
+        ink: picked ? (a.correct ? t.okInk : t.noInk) : t.ink,
+        border: picked ? (a.correct ? t.okInk : t.noInk) : t.line,
+        pick: () => this.setState({ answer: a.id })
+      };
+    });
+    const picked = answers.find((a) => a.id === answer);
+    const hasFeedback = !!picked;
+    const feedback = picked ? (picked.correct ? 'Correct — multiplying a string by a number repeats it.' : 'Not quite. Multiplying a string repeats it exactly — try again.') : '';
+    const feedbackBg = picked && picked.correct ? t.okBg : t.noBg;
+    const feedbackInk = picked && picked.correct ? t.okInk : t.noInk;
+
+    const dir = s.dir || 1;
+    const dirs = [1, 2].map((n) => ({
+      label: 'Direction ' + n,
+      pressed: dir === n ? 'true' : 'false',
+      bg: dir === n ? t.ink : t.card,
+      ink: dir === n ? t.bg : t.ink,
+      border: dir === n ? t.ink : t.line,
+      pick: () => this.setState({ dir: n })
+    }));
+    const preview = dir === 1
+      ? { bg: '#FFFFFF', ink: '#5E1636', btnBg: '#C2306A', btnInk: '#FFFFFF', font: "'Young Serif', Georgia, serif", alt: 'Direction 1 stand-in: soft white hero with a serif DanceFit title and a pink Book a class button' }
+      : { bg: '#1E1B26', ink: '#FFF6D6', btnBg: '#FFD24A', btnInk: '#1E1B26', font: "'Figtree', sans-serif", alt: 'Direction 2 stand-in: dark hero with a bold sans-serif DanceFit title and a yellow Book a class button' };
+
+    const mkToggle = (label, on, k) => ({
+      label: label,
+      pressed: on ? 'true' : 'false',
+      knobSide: on ? 'flex-end' : 'flex-start',
+      trackBg: on ? t.accent : t.chip,
+      knobBg: on ? t.accentInk : (dark ? '#8C84A3' : '#FFFFFF'),
+      toggle: () => {
+        const cur = this.state || {};
+        if (k === 'dark') {
+          const d = cur.dark === undefined ? !!this.props.dark : cur.dark;
+          this.setState({ dark: !d });
+        } else {
+          const next = {}; next[k] = !cur[k]; this.setState(next);
+        }
+      }
+    });
+    const toggles = [mkToggle('Dark mode', dark, 'dark'), mkToggle('Reduce motion', still, 'still'), mkToggle('Show focus order', focusMap, 'focusMap')];
+    const prefsOpen = !!s.prefsOpen;
+    const prefsExpanded = prefsOpen ? 'true' : 'false';
+    const togglePrefs = () => this.setState({ prefsOpen: !((this.state || {}).prefsOpen) });
+    const chevronDeg = prefsOpen ? '180deg' : '0deg';
+    const onCount = (dark ? 1 : 0) + (still ? 1 : 0) + (focusMap ? 1 : 0);
+    const anyOn = onCount > 0;
+    const rootClass = [still ? 'lf-still' : '', focusMap ? 'lf-focusmap' : ''].join(' ');
+
+    return {
+      t, p, built, challenges, impact, steps, panelBg, panelLabel,
+      isGrok: raw.panel === 'grok', isDance: raw.panel === 'dance', isPlaceholder: raw.panel === 'placeholder',
+      hasMedia: !!raw.media, hasNote: !!raw.note, hasSteps: steps.length > 0, hasProud: p.proud.length > 0,
+      answers, hasFeedback, feedback, feedbackBg, feedbackInk, dirs, preview,
+      toggles, prefsOpen, prefsExpanded, togglePrefs, chevronDeg, onCount, anyOn, rootClass
+    };
+  }
+}
+</script>
+</body>
+</html>

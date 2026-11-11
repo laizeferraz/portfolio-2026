@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Laize Ferraz — About me</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Figtree:wght@400;500;600;700&amp;family=Caveat:wght@600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@keyframes lfRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.lf-rise{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) both}
+.lf-rise2{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) .12s both}
+.lf-btn{transition:transform .2s}
+.lf-btn:hover{transform:translateY(-2px)}
+.lf-stage{transition:transform .25s,box-shadow .25s}
+.lf-stage:hover{transform:translateY(-2px);box-shadow:var(--lf-shadow)}
+.lf-root a:focus-visible,.lf-root button:focus-visible{outline:3px solid #8B6CF0;outline-offset:3px;border-radius:6px}
+.lf-skip{position:absolute;left:16px;top:-80px;z-index:10;padding:10px 16px;border-radius:999px;background:#2B2540;color:#FFFFFF;font-weight:600;text-decoration:none}
+.lf-skip:focus{top:16px}
+.lf-still *,.lf-still *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion: reduce){.lf-root *{animation:none!important;transition:none!important}}
+.lf-focusmap{counter-reset:lftab}
+.lf-focusmap a,.lf-focusmap button{position:relative;outline:2px dashed #C2306A;outline-offset:2px}
+.lf-focusmap a::after,.lf-focusmap button::after{counter-increment:lftab;content:counter(lftab);position:absolute;top:-11px;right:-11px;min-width:22px;height:22px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:#C2306A;color:#FFFFFF;font:700 11px/22px Figtree,sans-serif;text-align:center;z-index:3;pointer-events:none}
+</style>
+</helmet>
+<div class="lf-root {{rootClass}}" style="--lf-shadow: {{t.shadow}}; position: relative; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased">
+<a href="#about-main" class="lf-skip">Skip to content</a>
+
+<!-- TOP BAR -->
+<header style="max-width: 1040px; margin: 0 auto; padding: 20px clamp(20px, 5vw, 48px) 0; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px 24px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: {{t.ink}}; text-decoration: none; font-weight: 600">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+<span><span style="font-family: 'Young Serif', Georgia, serif; font-weight: 400">Laize Ferraz</span><span style="color: {{t.muted}}"> · Home</span></span>
+</a>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+<button type="button" aria-expanded="{{ prefsExpanded }}" onClick="{{ togglePrefs }}" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 14px; border-radius: 999px; border: 1.5px solid {{t.line}}; background: transparent; color: {{t.ink}}; font: 600 14.5px 'Figtree', sans-serif; cursor: pointer">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"></path><circle cx="16" cy="6" r="2"></circle><path d="M4 12h4"></path><path d="M12 12h8"></path><circle cx="10" cy="12" r="2"></circle><path d="M4 18h12"></path><circle cx="18" cy="18" r="2"></circle></svg>
+<span>Display settings</span>
+<sc-if value="{{ anyOn }}" hint-placeholder-val="{{ false }}"><span style="padding: 0 8px; border-radius: 999px; background: {{t.accent}}; color: {{t.accentInk}}; font-size: 12px; font-weight: 700; line-height: 20px">{{ onCount }} on</span></sc-if>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ chevronDeg }}); transition: transform .2s"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ prefsOpen }}" hint-placeholder-val="{{ false }}">
+<div role="group" aria-label="Display settings" style="width: 260px; padding: 4px; display: flex; flex-direction: column">
+<sc-for list="{{ toggles }}" as="tg" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ tg.pressed }}" onClick="{{ tg.toggle }}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 44px; padding: 0 4px; border: 0; background: transparent; color: {{t.ink}}; font: 500 15px 'Figtree', sans-serif; cursor: pointer; text-align: left">
+<span>{{ tg.label }}</span>
+<span aria-hidden="true" style="flex: none; display: flex; justify-content: {{ tg.knobSide }}; width: 42px; height: 24px; padding: 3px; box-sizing: border-box; border-radius: 999px; background: {{ tg.trackBg }}"><span style="width: 18px; height: 18px; border-radius: 50%; background: {{ tg.knobBg }}; box-shadow: 0 1px 3px rgba(0,0,0,.2)"></span></span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</header>
+
+<main id="about-main" style="max-width: 1040px; margin: 0 auto; padding: clamp(32px, 5vw, 64px) clamp(20px, 5vw, 48px) 48px; display: flex; flex-direction: column; gap: clamp(64px, 8vw, 104px)">
+
+<!-- HERO -->
+<section aria-labelledby="about-title" style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px 56px">
+<div style="flex: 0 1 300px; min-width: 0; margin: 0 auto; position: relative">
+<div aria-hidden="true" style="position: absolute; inset: -14px; border-radius: 42% 58% 55% 45% / 50% 45% 55% 50%; background: {{t.peach}}"></div>
+<div role="img" aria-label="Portrait placeholder: add your photo here" style="position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 42% 58% 55% 45% / 50% 45% 55% 50%; background: {{t.lav}}; color: {{t.accentText}}; display: grid; place-items: center; font-family: 'Young Serif', Georgia, serif; font-size: 56px">LF</div>
+<span style="position: absolute; right: -8px; bottom: 16px; padding: 6px 16px; border-radius: 999px; background: {{t.card}}; box-shadow: 0 10px 24px -14px rgba(60,40,110,.4); font-family: 'Caveat', cursive; font-size: 22px; color: {{t.ink}}">Olá! Hello!</span>
+</div>
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p class="lf-rise" style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: {{t.accentText}}">About me</p>
+<h1 id="about-title" class="lf-rise" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 58px); line-height: 1.08; letter-spacing: -0.015em; text-wrap: balance">From the courtroom to components.</h1>
+<p class="lf-rise2" style="margin: 0; font-size: clamp(18px, 1.8vw, 20px); line-height: 1.6; color: {{t.muted}}; text-wrap: pretty">I'm Laize, a self-taught frontend engineer from Brazil, living on the Sunshine Coast. I've been a lawyer, a teacher and an engineer, and each of those jobs shaped how I build for the web today.</p>
+<blockquote class="lf-rise2" style="margin: 4px 0 0; padding: 20px 24px; border-radius: 22px; background: {{t.lav}}; font-family: 'Young Serif', Georgia, serif; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.45">“Good software isn't just clean code. It's understanding who you're building for, solving the right problem, and making it feel simple on the other side.”</blockquote>
+</div>
+</section>
+
+<!-- JOURNEY -->
+<section aria-labelledby="journey-h" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 680px">
+<h2 id="journey-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(28px, 3vw, 40px); line-height: 1.15">My journey so far</h2>
+<p style="margin: 0; color: {{t.muted}}">The short version: a curious kid, a law degree, a new country, a classroom, and finally the job I'd been circling all along.</p>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0; position: relative">
+<sc-for list="{{ stages }}" as="sg" hint-placeholder-count="6">
+<li style="display: flex; gap: clamp(14px, 2.5vw, 28px); align-items: stretch">
+<div aria-hidden="true" style="flex: none; width: 44px; display: flex; flex-direction: column; align-items: center">
+<span style="width: 44px; height: 44px; border-radius: 50%; background: {{ sg.dot }}; border: {{ sg.dotBorder }}; box-sizing: border-box; color: {{t.ink}}; display: grid; place-items: center; font-family: 'Young Serif', serif; font-size: 17px">{{ sg.n }}</span>
+<span style="flex: 1; width: 2px; min-height: 16px; background: {{ sg.line }}"></span>
+</div>
+<article class="lf-stage" style="flex: 1; min-width: 0; margin-bottom: 18px; padding: 22px 24px; border-radius: 22px; background: {{ sg.bg }}; border: {{ sg.border }}; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: {{t.muted}}">{{ sg.when }}</p>
+<h3 style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 23px; line-height: 1.25">{{ sg.title }}</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">{{ sg.body }}</p>
+<p style="margin: 4px 0 0; padding: 10px 14px; border-radius: 14px; background: {{ sg.lessonBg }}; font-size: 15px; line-height: 1.5"><strong style="font-weight: 700">What it taught me:</strong> <span style="color: {{ sg.lessonInk }}">{{ sg.lesson }}</span></p>
+</article>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<!-- HOW I WORK -->
+<section aria-labelledby="work-h" style="display: flex; flex-direction: column; gap: 20px">
+<h2 id="work-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(28px, 3vw, 40px); line-height: 1.15">How I work</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{ principles }}" as="pc" hint-placeholder-count="4">
+<div style="padding: 22px; border-radius: 22px; background: {{ pc.bg }}; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 17.5px; font-weight: 700; line-height: 1.35">{{ pc.title }}</h3>
+<p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: {{t.muted}}">{{ pc.body }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- BEYOND WORK -->
+<section aria-labelledby="beyond-h" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px 48px">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h2 id="beyond-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(28px, 3vw, 40px); line-height: 1.15">Away from the keyboard</h2>
+<p style="margin: 0; color: {{t.muted}}; text-wrap: pretty">I love crafting, especially stickers and paper projects. I've been exploring cutting machines like Cricut and Silhouette, and it scratches the same itch as frontend work: turning an idea into something real that people can hold and use.</p>
+<p style="margin: 0; color: {{t.muted}}; text-wrap: pretty">I speak Portuguese and English, and I still get a little thrill every time a layout clicks into place.</p>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div role="img" aria-label="Photo placeholder: your sticker designs" style="aspect-ratio: 1 / 1; border-radius: 22px; border: 2px dashed {{t.accent}}; background: {{t.pink}}; display: grid; place-items: center; padding: 12px; text-align: center; font-size: 14px; font-weight: 600; color: {{t.accentText}}">[Photo of your stickers]</div>
+<div role="img" aria-label="Photo placeholder: a craft project" style="aspect-ratio: 1 / 1; border-radius: 22px; border: 2px dashed {{t.accent}}; background: {{t.butter}}; display: grid; place-items: center; padding: 12px; text-align: center; font-size: 14px; font-weight: 600; color: {{t.accentText}}">[Photo of a craft project]</div>
+</div>
+</section>
+
+<!-- NOW -->
+<section aria-labelledby="now-h" style="padding: clamp(24px, 4vw, 40px); border-radius: 28px; background: {{t.mint}}; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<p style="margin: 0; font-family: 'Caveat', cursive; font-size: 26px; line-height: 1; color: {{t.mintInk}}">right now</p>
+<h2 id="now-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2; color: {{t.mintInk}}">What I'm up to</h2>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<li style="display: flex; gap: 12px; align-items: flex-start"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.mintInk}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg><span style="color: {{t.mintInk}}"><strong>Learning:</strong> a full stack postgraduate course at Rocketseat, to understand the backend my interfaces talk to.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.mintInk}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><path d="m14.7 6.3 3 3"></path><path d="M3 21l3.5-.9L19.2 7.4a2.1 2.1 0 0 0-3-3L3.5 17.1Z"></path></svg><span style="color: {{t.mintInk}}"><strong>Building:</strong> this portfolio, in Next.js and Tailwind CSS, to WCAG 2.2 AA.</span></li>
+<li style="display: flex; gap: 12px; align-items: flex-start"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{t.mintInk}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg><span style="color: {{t.mintInk}}"><strong>Looking for:</strong> a frontend role at a product company, on the Sunshine Coast, remote or hybrid.</span></li>
+</ul>
+<p style="margin: 0; font-size: 13.5px; color: {{t.mintInk}}">Last updated [MONTH YEAR]</p>
+</section>
+
+<!-- CONTACT -->
+<section aria-labelledby="contact-h" style="padding: clamp(28px, 4vw, 44px); border-radius: 28px; background: {{t.lav}}; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="contact-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.15">Let's talk</h2>
+<p style="margin: 0; color: {{t.muted}}">Hiring, collaborating, or just curious about the career change? I'd love to hear from you.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="mailto:laizeferraz@gmail.com" class="lf-btn" style="display: inline-flex; align-items: center; gap: 10px; min-height: 50px; box-sizing: border-box; padding: 0 24px; border-radius: 999px; background: {{t.accent}}; color: {{t.accentInk}}; text-decoration: none; font-weight: 700">laizeferraz@gmail.com <span aria-hidden="true">→</span></a>
+<a href="Main.dc.html#work" class="lf-btn" style="display: inline-flex; align-items: center; min-height: 50px; box-sizing: border-box; padding: 0 22px; border-radius: 999px; background: {{t.card}}; color: {{t.ink}}; text-decoration: none; font-weight: 700">See my work</a>
+</div>
+</section>
+
+<footer style="font-size: 14px; color: {{t.muted}}">Designed and built by Laize Ferraz with Next.js and Tailwind CSS, to meet WCAG 2.2 AA.</footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1440,"height":5200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const dark = s.dark === undefined ? !!this.props.dark : s.dark;
+    const still = !!s.still;
+    const focusMap = !!s.focusMap;
+
+    const light = {
+      bg: '#FCFAFF', ink: '#2B2540', muted: '#5A5470', card: '#FFFFFF', line: '#E9E3F5',
+      chip: '#F1ECFC', lav: '#EDE6FF', mint: '#D6F5E8', mintInk: '#1E4D3A', peach: '#FFE1D3', pink: '#FFE0EC', blue: '#DCEBFF', butter: '#FFF3C4',
+      accent: '#6F4FD6', accentInk: '#FFFFFF', accentText: '#5B3CC4',
+      shadow: '0 18px 36px -24px rgba(60,40,110,.35)'
+    };
+    const darkT = {
+      bg: '#16131E', ink: '#EEEAF7', muted: '#B6AECB', card: '#211D2C', line: '#2F2A3D',
+      chip: '#2C2639', lav: '#2A2340', mint: '#1C3329', mintInk: '#A8E6C6', peach: '#3A2620', pink: '#3A2030', blue: '#1D2A3D', butter: '#36301A',
+      accent: '#B9A6F2', accentInk: '#17141F', accentText: '#C9B9FF',
+      shadow: '0 18px 36px -24px rgba(0,0,0,.7)'
+    };
+    const t = dark ? darkT : light;
+
+    const raw = [
+      { when: 'Age 15 · Brazil', title: 'A 486 and no computer classes', body: 'My curiosity started with a 486 computer. With no computer classes nearby, I taught myself, and took a hardware course just to understand what was happening behind the screen.', lesson: 'If nobody can teach me something, I go and figure it out.' },
+      { when: 'Brazil', title: 'Lawyer', body: 'I studied Law at Tiradentes University and practised as a lawyer in Brazil.', lesson: 'Read the requirements closely, and argue for the person on the other side.' },
+      { when: '[YEAR] · Australia', title: 'A new country, a fresh start', body: '[Moving to Australia: why you came, and what it was like starting over in a new language and career.]', lesson: '[What the move taught you.]' },
+      { when: '2019 · Sydney', title: 'Back to tech', body: 'I went back to the curiosity I started with and studied a Certificate IV in Web-based Technologies at TAFE Sydney.', lesson: 'Strong fundamentals in HTML, CSS and JavaScript make everything else easier.' },
+      { when: '2020 – 2022 · Academy Xi', title: 'Teaching the next generation', body: 'I taught at three 12-week coding bootcamps and mentored 60+ aspiring developers in HTML, CSS, JavaScript and React.', lesson: 'If I can’t explain something simply, I don’t understand it well enough yet.' },
+      { when: '2021 – 2023 · PALO IT', title: 'Software Engineer, promoted in under a year', body: 'I built three client products in React, TypeScript and Next.js, from insurtech to digital health, and became the person who onboarded new teammates.', lesson: 'Learn the product deeply and you become the person the team relies on.' },
+      { when: '2023 – 2024 · Grok Academy', title: 'Components for 200,000+ students', body: 'I built a Web Component library that let educators create interactive computing lessons without waiting on engineers.', lesson: 'Good components and good docs make everyone else faster.' },
+      { when: '2025 – 2026 · Sunshine Coast', title: 'Healthcare SaaS and my first freelance client', body: 'I made a healthcare platform type-safe at Xestro, and designed and built a website for DanceFit Sunshine Coast.', lesson: '[What this chapter taught you.]' },
+      { when: 'Next', title: 'Your team?', body: 'I’m looking for a frontend role at a product company where accessibility and craft matter.', lesson: 'The best chapters start with a conversation.', next: true }
+    ];
+    const dots = [t.butter, t.blue, t.peach, t.mint, t.pink, t.lav];
+    const isTodo = (x) => typeof x === 'string' && x.charAt(0) === '[';
+    const stages = raw.map((r, i) => {
+      const todo = isTodo(r.body) || isTodo(r.lesson);
+      const last = i === raw.length - 1;
+      return {
+        n: r.next ? '→' : String(i + 1),
+        when: r.when, title: r.title, body: r.body, lesson: r.lesson,
+        dot: r.next ? 'transparent' : dots[i % dots.length],
+        dotBorder: r.next ? ('2px dashed ' + t.accent) : '0',
+        line: last ? 'transparent' : t.line,
+        bg: r.next ? 'transparent' : t.card,
+        border: (r.next || todo) ? ('2px dashed ' + t.accent) : ('1px solid ' + t.line),
+        lessonBg: r.next ? t.lav : t.chip,
+        lessonInk: isTodo(r.lesson) ? t.accentText : t.muted
+      };
+    });
+
+    const principles = [
+      { title: 'Accessibility first', body: 'Semantic HTML, keyboard support and contrast from the first commit, then automated and manual checks before anything ships.', bg: t.lav },
+      { title: 'Ask why before how', body: 'I dig into the problem and the people behind it before writing code, a habit I brought with me from law.', bg: t.mint },
+      { title: 'Explain it clearly', body: 'Demos in plain language, docs people actually read, and onboarding that gets new teammates productive fast.', bg: t.peach },
+      { title: 'Build it to last', body: 'Typed, tested, reusable components, so the next feature is easier than the last one.', bg: t.butter }
+    ];
+
+    const mkToggle = (label, on, k) => ({
+      label: label,
+      pressed: on ? 'true' : 'false',
+      knobSide: on ? 'flex-end' : 'flex-start',
+      trackBg: on ? t.accent : t.chip,
+      knobBg: on ? t.accentInk : (dark ? '#8C84A3' : '#FFFFFF'),
+      toggle: () => {
+        const cur = this.state || {};
+        if (k === 'dark') {
+          const d = cur.dark === undefined ? !!this.props.dark : cur.dark;
+          this.setState({ dark: !d });
+        } else {
+          const next = {}; next[k] = !cur[k]; this.setState(next);
+        }
+      }
+    });
+    const toggles = [mkToggle('Dark mode', dark, 'dark'), mkToggle('Reduce motion', still, 'still'), mkToggle('Show focus order', focusMap, 'focusMap')];
+    const prefsOpen = !!s.prefsOpen;
+    const prefsExpanded = prefsOpen ? 'true' : 'false';
+    const togglePrefs = () => this.setState({ prefsOpen: !((this.state || {}).prefsOpen) });
+    const chevronDeg = prefsOpen ? '180deg' : '0deg';
+    const onCount = (dark ? 1 : 0) + (still ? 1 : 0) + (focusMap ? 1 : 0);
+    const anyOn = onCount > 0;
+    const rootClass = [still ? 'lf-still' : '', focusMap ? 'lf-focusmap' : ''].join(' ');
+
+    return { t, stages, principles, toggles, prefsOpen, prefsExpanded, togglePrefs, chevronDeg, onCount, anyOn, rootClass };
+  }
+}
+</script>
+</body>
+</html>
