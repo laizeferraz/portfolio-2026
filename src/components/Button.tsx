@@ -14,7 +14,7 @@ type ButtonProps = {
 };
 
 const base =
-  "inline-flex min-h-[50px] items-center gap-2.5 rounded-full px-6 text-sm font-bold no-underline motion-ok:transition motion-ok:duration-200 motion-ok:ease-soft motion-ok:hover:-translate-y-0.5";
+  "inline-flex min-h-12.5 items-center gap-2.5 rounded-full px-6 text-sm font-bold no-underline motion-ok:transition motion-ok:duration-200 motion-ok:ease-soft motion-ok:hover:-translate-y-0.5";
 
 const styles = {
   primary: "bg-accent text-accent-ink",

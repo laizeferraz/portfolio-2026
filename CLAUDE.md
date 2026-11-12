@@ -404,6 +404,7 @@ Display settings is a signature feature ("These really work — accessibility is
   - Demos go in `src/components/demos/`.
   - Illustrations go in `src/components/illustrations/`.
   - Content goes in `src/content/`.
+- **Prefer Tailwind's scale classes to arbitrary pixel values.** Tailwind v4's spacing scale accepts any multiple of 0.25rem (4 px), so write `w-10.5` (42 px), `size-4.5` (18 px), `p-0.75` (3 px) and `min-h-12.5` (50 px), not `w-[42px]`. They are rem-based, so they scale with text size. Use an arbitrary value only when no scale class exists (e.g. a 1.5 px border), and add a short comment if the reason isn't obvious.
 - Use Tailwind utilities and tokens, with no inline styles. Obvious shared components:
   - SectionLabel
   - Tag

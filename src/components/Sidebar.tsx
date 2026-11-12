@@ -15,7 +15,7 @@ const rise2 = "motion-ok:animate-rise motion-ok:[animation-delay:120ms]";
 const rise3 = "motion-ok:animate-rise motion-ok:[animation-delay:240ms]";
 
 const sidebarLink =
-  "inline-flex min-h-11 items-center text-sm font-semibold text-ink underline underline-offset-[5px]";
+  "inline-flex min-h-11 items-center text-sm font-semibold text-ink underline underline-offset-5";
 
 /**
  * The home page's <header>: who Laize is, the section nav, and the
