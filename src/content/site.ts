@@ -1,4 +1,15 @@
-// Shared contact details and links. Change them here, not in components.
+// Shared identity, contact details and links. Change them here, not in
+// components, so the site, metadata and structured data always agree.
+
+export const NAME = "Laize Ferraz";
+export const JOB_TITLE = "Frontend Software Engineer";
+export const TAGLINE =
+  "I build accessible React interfaces — and the component libraries behind them.";
+export const AVAILABILITY =
+  "Available now · Sunshine Coast, QLD · Australian citizen";
+
+/** Her photo in /public. The JSON-LD `image` will reuse it. */
+export const PORTRAIT_SRC = "/portfolio-photo.avif";
 
 export const EMAIL = "laizeferraz@gmail.com";
 export const MAILTO = `mailto:${EMAIL}`;
