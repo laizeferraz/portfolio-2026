@@ -14,3 +14,15 @@ export const RESUME_URL = "/files/laize-ferraz-resume.pdf";
  * (public/files/laize-ferraz-resume.pdf, 66,563 bytes).
  */
 export const RESUME_SIZE: string | null = "65 KB";
+
+/**
+ * The home page sections, in page order. The section nav and the
+ * section ids both come from here, so the links can't point nowhere.
+ */
+export const HOME_SECTIONS = [
+  { id: "about", label: "About", heading: "About" },
+  { id: "experience", label: "Experience", heading: "Experience" },
+  { id: "work", label: "Work", heading: "Selected work" },
+] as const;
+
+export type HomeSectionId = (typeof HOME_SECTIONS)[number]["id"];

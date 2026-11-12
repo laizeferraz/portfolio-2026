@@ -18,7 +18,8 @@ function isAppRoute(href: string) {
 
 /**
  * The plumbing Button and TextLink share: picks next/link or <a>,
- * and handles new-tab behaviour. Not meant to be used on its own.
+ * and handles new-tab behaviour. Use it directly only for links with
+ * their own look, like the sidebar links.
  */
 export function LinkBase({
   href,

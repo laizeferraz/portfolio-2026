@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Caveat, Figtree, Young_Serif } from "next/font/google";
+import { SkipLink } from "@/components/SkipLink";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${figtree.variable} ${youngSerif.variable} ${caveat.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SkipLink />
+        {children}
+      </body>
     </html>
   );
 }
