@@ -38,7 +38,7 @@ export function TextLink({
       href={href}
       external={external}
       newTab={newTab}
-      className={`font-bold text-accent-text underline underline-offset-[5px] ${layout}`}
+      className={`font-bold text-accent-text underline underline-offset-5 ${layout}`}
     >
       <span>
         {children}

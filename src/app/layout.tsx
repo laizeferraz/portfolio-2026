@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Caveat, Figtree, Young_Serif } from "next/font/google";
+import { DisplayPrefsScript } from "@/components/DisplayPrefsScript";
 import { SkipLink } from "@/components/SkipLink";
 
 const figtree = Figtree({
@@ -27,10 +28,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // suppressHydrationWarning: the inline script sets data-theme, data-motion
+    // and data-focus-map on <html> before React hydrates. It only covers
+    // <html>'s own attributes, not its children.
     <html
       lang="en"
       className={`${figtree.variable} ${youngSerif.variable} ${caveat.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <DisplayPrefsScript />
+      </head>
       <body className="min-h-full flex flex-col">
         <SkipLink />
         {children}
