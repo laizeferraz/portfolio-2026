@@ -260,11 +260,12 @@ Load with `next/font/google`: self-hosted, subset, `display: swap`.
 
 Minimal:
 - A short "rise" on load for the sidebar text.
+- Two pulses on the availability dot on load (`animate-ping-once`, 3.5 s in total, then it stops).
 - The nav bar width transition.
 - Hover lifts.
 - Colour transitions in the demos.
 
-There are no looping animations. Keep it that way: it avoids WCAG 2.2.2.
+There are no looping animations. Keep it that way: it avoids WCAG 2.2.2. Anything that moves on its own must stop within 5 seconds.
 
 - Write all motion with the `motion-ok:` variant (`motion-ok:animate-rise`, `motion-ok:transition`). It only applies when the OS allows motion and the Reduce motion setting is off.
 - Never use `!important`. `tokens.css` has an unlayered safety net that stops stray motion without it.
