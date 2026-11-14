@@ -37,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <link rel="icon" href="/favicon.svg" />
         <DisplayPrefsScript />
       </head>
       <body className="min-h-full flex flex-col">
