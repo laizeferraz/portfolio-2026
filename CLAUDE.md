@@ -23,7 +23,7 @@ The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Suns
 - **Name and title:** Laize Ferraz, Frontend Software Engineer. 4+ years across healthcare SaaS, edtech and consulting.
 - **Focus:** React and TypeScript, accessible interfaces, and the component libraries and design systems behind them.
 - **Status:** available now. Australian citizen. Based on the Sunshine Coast, QLD. Open to remote or hybrid work.
-- **Background:** started with a 486 computer at 15 and taught herself. Practised law in Brazil, then moved to Australia and retrained as a software engineer. Outside work: stickers and paper crafts.
+- **Background:** started with a 486 computer at 15 and taught herself. Practised law in Brazil, then moved to Australia and retrained as a software engineer. Outside work: dancing and volleyball (her favourites), plus stickers and paper crafts.
 - **Experience** (exact dates from the design):
   - Xestro, Software Engineer, Nov 2025 – Jan 2026
   - Grok Academy, Software Engineer, Oct 2023 – Aug 2024
