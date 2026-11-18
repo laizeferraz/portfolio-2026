@@ -77,8 +77,8 @@ Add permanent redirects in `next.config`:
 ### Layout
 
 - Max-width 1200 px, side padding `clamp(20px, 5vw, 48px)`.
-- **960 px and up:** two columns, `minmax(280px, 360px)` and `1fr`, with a 40–72 px gap. The sidebar is `position: sticky; top: 0`, with `max-height: 100vh` and its own scrolling.
-- **640–959 px:** the sidebar sits above the content, with its two blocks side by side.
+- **1024 px and up:** two columns, `minmax(280px, 360px)` and `1fr`, with a 40–72 px gap. The sidebar is `position: sticky; top: 0`, with `max-height: 100vh` and its own scrolling.
+- **640–1023 px:** the sidebar sits above the content as a top header in two top-aligned columns: SidebarIntro, SidebarLinks and DisplaySettings on the left; SectionNav on the right, right-aligned, with each bar after its label (the label slides left as the bar grows). On phones and in the 1024 px+ sidebar the order is intro, links, nav, Display settings, and the bar sits before the label. The tablet grid places Display settings in row 2 under the intro, so it reads row by row in DOM order.
 - **Below 640 px:** everything stacks.
 
 ### Sidebar (`<header>`)
@@ -431,7 +431,7 @@ Display settings is a signature feature ("These really work — accessibility is
 - Works by keyboard, with a visible focus ring.
 - Contrast passes in both themes.
 - All Display settings work.
-- Matches the design at 320 px, 640–959 px and 960 px and up.
+- Matches the design at 320 px, 640–1023 px and 1024 px and up.
 - No placeholder is left that isn't listed below.
 
 **For the MVP launch**

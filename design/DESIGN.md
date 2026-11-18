@@ -132,11 +132,11 @@ Rules: use `text-wrap: balance` on headings and `text-wrap: pretty` on paragraph
 
 | Page | Container | Structure |
 |---|---|---|
-| Home | `max-w-home` (1200) | ≥960px: grid with a 280–360px intro column (sticky, `max-height: 100vh`) and the content column. 640–959px: one column, and the intro splits into two halves (intro on the left, settings and links on the right). <640px: one column. |
+| Home | `max-w-home` (1200) | ≥1024px: grid with a 280–360px intro column (sticky, `max-height: 100vh`) and the content column. 640–1023px: one column, topped by a two-column header (intro, icon links and settings on the left; section nav right-aligned on the right, bars after the labels), both top-aligned. <640px: one column. |
 | Project story | `max-w-page` (1040) | Top bar → hero → visual panel → reading column (`max-w-reading`) → previous/next → contact |
 | About | `max-w-page` (1040) | Top bar → hero with portrait → journey timeline → How I work → Away from the keyboard → Right now → contact |
 
-**Breakpoints:** `sm` 640px, `split` 960px (custom, in `tokens.css`). Use `split:` for the two-column home.
+**Breakpoints:** `sm` 640px, `split` 1024px (custom, in `tokens.css`). Use `split:` for the two-column home.
 
 > **Fix (learned on the canvas):** only make the intro column sticky when the grid is actually two columns. Sticky on a stacked layout makes content scroll underneath it.
 

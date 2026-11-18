@@ -5,7 +5,7 @@ import { HOME_SECTIONS } from "@/content/site";
 
 /**
  * Home: sidebar + content. One column on phones; the sidebar's two
- * blocks sit side by side from 640px; two columns from 960px (`split:`).
+ * blocks sit side by side from 640px; two columns from 1024px (`split:`).
  */
 export default function Home() {
   return (
