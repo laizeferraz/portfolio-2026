@@ -228,7 +228,7 @@
   --container-page: 65rem; /* 1040 story & about pages */
   --container-reading: 47.5rem; /* 760  long-form text */
   --container-sidebar: 22.5rem; /* 360  home intro column */
-  --breakpoint-split: 60rem; /* 960  home becomes two columns */
+  --breakpoint-split: 64rem; /* 1024 home becomes two columns */
 
   @keyframes lf-rise {
     from {
