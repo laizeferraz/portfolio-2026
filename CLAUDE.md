@@ -13,7 +13,7 @@ The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Suns
 
 - **Audience:** recruiters skimming on a phone, and hiring managers or senior engineers reading on a desktop. Check everything on mobile first.
 - **Approach:** agile. Launch a small MVP fast, then improve it one project at a time. Never block a launch on content that isn't ready.
-- **Hosting:** Vercel, at https://www.laizeferraz.com. This replaces the current site on the same domain.
+- **Hosting:** Vercel, at https://laizeferraz.com (the main domain; www redirects to it). This replaces the current site on the same domain.
 - **Design source:** "Option D · Clear & personal" in her Claude Design file *Laize Ferraz — Portfolio · Option D*. Exported copies live in `design/` (see "Design").
   - When the design and this file disagree on accessibility, SEO or content, this file wins. Flag the difference instead of copying the design.
   - Earlier options (A and C) are retired. Ignore them.
@@ -365,7 +365,7 @@ Display settings is a signature feature ("These really work — accessibility is
 ### Metadata
 
 - Use the Next.js Metadata API.
-- Set `metadataBase` to `https://www.laizeferraz.com`, a title template `%s | Laize Ferraz`, and a canonical URL on every page.
+- Set `metadataBase` to `https://laizeferraz.com`, a title template `%s | Laize Ferraz`, and a canonical URL on every page.
 - **Home title:** `Laize Ferraz | Frontend Engineer, React & Accessibility`.
 - **Home description:** "Frontend engineer on the Sunshine Coast building accessible React interfaces and component libraries. 4+ years in healthcare SaaS, edtech and consulting." She approves the final wording of both.
 - **Story pages:** the title is the project title. The description is its summary.
