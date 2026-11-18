@@ -35,7 +35,7 @@ The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Suns
 - **Education:** Cert IV Web-based Technologies (TAFE Sydney, 2019) and Bachelor of Law (Tiradentes University).
 - **Languages:** English (fluent), Portuguese (native).
 - **Highlights:**
-  - 200,000+ students in 3,400 Australian schools use components she built.
+  - She built the component library for Grok Academy, an edtech platform used by 200,000+ students in 3,400 Australian schools. Never claim the students used her components: content creators chose which ones went into courses.
   - 100% unit test coverage on the Grok library.
   - 60+ developers taught and mentored.
 - **Contact:**
@@ -150,7 +150,7 @@ Section H2s are small uppercase labels in `accentText`. Card titles and roles ar
 | Story sprint | Slug | Project | Meta line | Notes |
 | --- | --- | --- | --- | --- |
 | 1 | `cyber-insurance-platform` | Replacing spreadsheets for cyber insurance | PALO IT · Insurtech · Sep 2021 – Apr 2022 | Client stays anonymous ("a global cyber reinsurer"). Illustrations only. Copy is complete in the design. |
-| 2 | `grok-web-components` | A Web Component library for 200,000+ students | Grok Academy · Edtech · Oct 2023 – Aug 2024 | Featured. Live Storybook: https://groklearning.github.io/grok-web-components/ |
+| 2 | `grok-web-components` | A Web Component library for an edtech platform with 200,000+ students | Grok Academy · Edtech · Oct 2023 – Aug 2024 | Featured. Live Storybook: https://groklearning.github.io/grok-web-components/ |
 | 3 | `dancefit-sunshine-coast` | A website for DanceFit Sunshine Coast | Freelance · Client website · 2026 | Live at https://dancefitsunshinecoast.com. The client agreed to be named and linked; screenshots are fine. |
 | 4 | `ceta` | Helping children face fears and worries | PALO IT · Digital health · 2023 | Private MVP: illustrations only. |
 | 5 | `white-label-marketplace` | A white-label NFT marketplace | PALO IT · Marketplace · 2022 | Frame it around theming and payments, not NFTs. Not online: illustrations only. |
