@@ -222,7 +222,7 @@ A `lav` `rounded-3xl` panel with a `font-display` heading, one line of text and 
 ## 9. Voice & content
 
 - First person, plain English, short sentences. Australian spelling (colour, organise).
-- Lead with outcomes and numbers you can stand behind (200,000+ students, 100% coverage, promoted in under a year).
+- Lead with outcomes and numbers you can stand behind (a platform with 200,000+ students, 100% coverage, promoted in under a year).
 - Headings say what something is, not that it's clever ("What I built", "Challenges", "Impact").
 - Keep the job title consistent everywhere: **Frontend Software Engineer**.
 - Use real dates. No "[placeholder]" text in production.

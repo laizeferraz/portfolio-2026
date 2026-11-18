@@ -52,7 +52,7 @@ export const EXPERIENCE: ExperienceRole[] = [
     start: { text: "Oct 2023", iso: "2023-10" },
     end: { text: "Aug 2024", iso: "2024-08" },
     summary:
-      "Built the Lit and TypeScript Web Component library used by 200,000+ students across 3,400 Australian schools — documented in Storybook, with 100% unit test coverage and automated accessibility tests.",
+      "Built the Lit and TypeScript Web Component library for an edtech platform used by 200,000+ students in 3,400 Australian schools — documented in Storybook, with 100% unit test coverage and automated accessibility tests.",
     tags: ["Lit", "TypeScript", "Storybook", "Vitest"],
   },
   {

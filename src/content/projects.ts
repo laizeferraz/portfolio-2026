@@ -63,7 +63,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "grok-web-components",
-    title: "A Web Component library for 200,000+ students",
+    title:
+      "A Web Component library for an edtech platform with 200,000+ students",
     metaLine: "Grok Academy · Edtech · Oct 2023 – Aug 2024",
     tint: "lav",
     published: false,
