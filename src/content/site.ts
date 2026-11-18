@@ -1,6 +1,9 @@
 // Shared identity, contact details and links. Change them here, not in
 // components, so the site, metadata and structured data always agree.
 
+/** The live domain, with no trailing slash. Sitemap, robots and metadata use it. */
+export const SITE_URL = "https://laizeferraz.com";
+
 export const NAME = "Laize Ferraz";
 export const JOB_TITLE = "Frontend Software Engineer";
 export const TAGLINE =
