@@ -4,12 +4,14 @@ import { ContactPanel } from "@/components/ContactPanel";
 import { ExperienceList } from "@/components/ExperienceList";
 import { HomeSection } from "@/components/HomeSection";
 import { Sidebar } from "@/components/Sidebar";
+import { WorkSection } from "@/components/WorkSection";
 import { HOME_SECTIONS, type HomeSectionId } from "@/content/site";
 
 /** What goes inside each home section, below its H2. */
-const SECTION_CONTENT: Partial<Record<HomeSectionId, ReactNode>> = {
+const SECTION_CONTENT: Record<HomeSectionId, ReactNode> = {
   about: <AboutContent />,
   experience: <ExperienceList />,
+  work: <WorkSection />,
 };
 
 /**
@@ -26,7 +28,6 @@ export default function Home() {
           id="content"
           className="flex flex-col gap-[clamp(72px,9vw,112px)]"
         >
-          {/* Work content lands in its own ticket. */}
           {HOME_SECTIONS.map((section) => (
             <HomeSection
               key={section.id}
