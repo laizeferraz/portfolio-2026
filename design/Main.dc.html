@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Laize Ferraz — Clear &amp; personal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Figtree:wght@400;500;600;700&amp;family=Caveat:wght@600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+@keyframes lfRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.lf-rise{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) both}
+.lf-rise2{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) .12s both}
+.lf-rise3{animation:lfRise .8s cubic-bezier(.2,.7,.2,1) .24s both}
+.lf-item{transition:background-color .25s,box-shadow .25s,transform .25s}
+.lf-item:hover{background:var(--lf-card);box-shadow:var(--lf-shadow);transform:translateY(-2px)}
+.lf-btn{transition:transform .2s,box-shadow .2s}
+.lf-btn:hover{transform:translateY(-2px)}
+.lf-nav a .lf-bar{display:inline-block;width:28px;height:2px;background:currentColor;opacity:.45;transition:width .25s,opacity .25s}
+.lf-nav a:hover .lf-bar,.lf-nav a:focus-visible .lf-bar{width:64px;opacity:1}
+.lf-skip{position:absolute;left:16px;top:-80px;z-index:10;padding:10px 16px;border-radius:999px;background:#2B2540;color:#FFFFFF;font-weight:600;text-decoration:none}
+.lf-skip:focus{top:16px}
+.lf-root a:focus-visible,.lf-root button:focus-visible,.lf-root input:focus-visible{outline:3px solid #8B6CF0;outline-offset:3px;border-radius:6px}
+.lf-still *,.lf-still *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion: reduce){.lf-root *{animation:none!important;transition:none!important}}
+@media (min-width:960px){.lf-layout{display:grid!important;grid-template-columns:minmax(280px,360px) minmax(0,1fr);column-gap:clamp(40px,5vw,72px)!important}.lf-side{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto}}
+@media (min-width:640px) and (max-width:959px){.lf-side{flex-direction:row!important;flex-wrap:wrap;align-items:flex-end}.lf-side > div{flex:1 1 280px;min-width:0}}
+.lf-focusmap{counter-reset:lftab}
+.lf-focusmap a,.lf-focusmap button,.lf-focusmap .lf-check{position:relative;outline:2px dashed #C2306A;outline-offset:2px}
+.lf-focusmap a::after,.lf-focusmap button::after,.lf-focusmap .lf-check::after{counter-increment:lftab;content:counter(lftab);position:absolute;top:-11px;right:-11px;min-width:22px;height:22px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:#C2306A;color:#FFFFFF;font:700 11px/22px Figtree,sans-serif;text-align:center;z-index:3;pointer-events:none}
+</style>
+</helmet>
+<div class="lf-root {{rootClass}}" style="--lf-card: {{t.card}}; --lf-shadow: {{t.shadow}}; position: relative; background: {{t.bg}}; color: {{t.ink}}; font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased">
+<a href="#content" class="lf-skip">Skip to content</a>
+
+<div class="lf-layout" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); display: flex; flex-wrap: wrap; gap: 0 72px">
+
+<!-- LEFT: who I am, where to go, and settings that prove the point -->
+<header class="lf-side" style="flex: 1 1 360px; min-width: 0; box-sizing: border-box; padding: clamp(40px, 7vw, 96px) 0 40px; display: flex; flex-direction: column; justify-content: space-between; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div class="lf-rise" style="display: flex; align-items: center; gap: 14px">
+<div role="img" aria-label="Portrait placeholder: add your photo here" style="flex: none; width: 64px; height: 64px; border-radius: 50%; background: {{t.lav}}; color: {{t.accentText}}; display: grid; place-items: center; font-family: 'Young Serif', Georgia, serif; font-size: 22px; outline: 3px solid {{t.lav}}; outline-offset: 2px">LF</div>
+<p style="margin: 0; font-family: 'Caveat', cursive; font-size: 28px; line-height: 1; color: {{t.accentText}}">Olá! Hi there,</p>
+</div>
+<h1 class="lf-rise2" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -0.015em">Laize Ferraz</h1>
+<p class="lf-rise2" style="margin: 0; font-size: 20px; font-weight: 600; line-height: 1.3">Frontend Software Engineer</p>
+<p class="lf-rise3" style="margin: 0; max-width: 380px; color: {{t.muted}}; text-wrap: pretty">I build accessible React interfaces — and the component libraries behind them.</p>
+<p class="lf-rise3" style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: {{t.muted}}"><span aria-hidden="true" style="flex: none; width: 8px; height: 8px; border-radius: 50%; background: #2E9A6A; box-shadow: 0 0 0 4px rgba(46,154,106,.18)"></span>Available now · Sunshine Coast, QLD · Australian citizen</p>
+
+<nav aria-label="Sections" class="lf-nav" style="margin-top: 24px">
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px">
+<li><a href="#about" style="display: inline-flex; align-items: center; gap: 16px; min-height: 40px; color: {{t.ink}}; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span class="lf-bar" aria-hidden="true"></span>About</a></li>
+<li><a href="#experience" style="display: inline-flex; align-items: center; gap: 16px; min-height: 40px; color: {{t.ink}}; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span class="lf-bar" aria-hidden="true"></span>Experience</a></li>
+<li><a href="#work" style="display: inline-flex; align-items: center; gap: 16px; min-height: 40px; color: {{t.ink}}; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase"><span class="lf-bar" aria-hidden="true"></span>Work</a></li>
+</ul>
+</nav>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="max-width: 320px; display: flex; flex-direction: column; gap: 4px">
+<button type="button" aria-expanded="{{ prefsExpanded }}" onClick="{{ togglePrefs }}" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 14px; border-radius: 999px; border: 1.5px solid {{t.line}}; background: transparent; color: {{t.ink}}; font: 600 14.5px 'Figtree', sans-serif; cursor: pointer">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"></path><path d="M18 6h2"></path><circle cx="16" cy="6" r="2"></circle><path d="M4 12h4"></path><path d="M12 12h8"></path><circle cx="10" cy="12" r="2"></circle><path d="M4 18h12"></path><path d="M20 18h0"></path><circle cx="18" cy="18" r="2"></circle></svg>
+<span>Display settings</span>
+<sc-if value="{{ anyOn }}" hint-placeholder-val="{{ false }}"><span style="padding: 0 8px; border-radius: 999px; background: {{t.accent}}; color: {{t.accentInk}}; font-size: 12px; font-weight: 700; line-height: 20px">{{ onCount }} on</span></sc-if>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate({{ chevronDeg }}); transition: transform .2s"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+<sc-if value="{{ prefsOpen }}" hint-placeholder-val="{{ false }}">
+<div role="group" aria-label="Display settings" style="padding: 4px 4px 0; display: flex; flex-direction: column">
+<sc-for list="{{ toggles }}" as="tg" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ tg.pressed }}" onClick="{{ tg.toggle }}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 44px; padding: 0 4px; border: 0; background: transparent; color: {{t.ink}}; font: 500 15px 'Figtree', sans-serif; cursor: pointer; text-align: left">
+<span>{{ tg.label }}</span>
+<span aria-hidden="true" style="flex: none; display: flex; justify-content: {{ tg.knobSide }}; width: 42px; height: 24px; padding: 3px; box-sizing: border-box; border-radius: 999px; background: {{ tg.trackBg }}"><span style="width: 18px; height: 18px; border-radius: 50%; background: {{ tg.knobBg }}; box-shadow: 0 1px 3px rgba(0,0,0,.2)"></span></span>
+</button>
+</sc-for>
+<p style="margin: 4px 4px 0; font-size: 13.5px; line-height: 1.5; color: {{t.muted}}">These really work — accessibility is how I build, not a checkbox.</p>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 15px; font-weight: 600">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; color: {{t.ink}}">GitHub</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; color: {{t.ink}}">LinkedIn</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; color: {{t.ink}}">Résumé (PDF)</a>
+<a href="mailto:laizeferraz@gmail.com" style="display: inline-flex; align-items: center; min-height: 44px; color: {{t.ink}}">Email</a>
+</div>
+</div>
+</header>
+
+<!-- RIGHT: the content -->
+<main id="content" style="flex: 999 1 560px; min-width: 0; padding: clamp(40px, 7vw, 96px) 0 48px; display: flex; flex-direction: column; gap: clamp(72px, 9vw, 112px)">
+
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-h" style="display: flex; flex-direction: column; gap: 20px">
+<h2 id="about-h" style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: {{t.accentText}}">About</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px 40px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px; color: {{t.muted}}">
+<p style="margin: 0; text-wrap: pretty">I'm a frontend engineer who cares about the people on the other side of the screen. For 4+ years I've built <strong style="color: {{t.ink}}; font-weight: 600">React and TypeScript</strong> interfaces across healthcare SaaS, edtech and consulting — lately with a focus on <strong style="color: {{t.ink}}; font-weight: 600">component libraries and design systems</strong>.</p>
+<p style="margin: 0; text-wrap: pretty">Before code, I was a lawyer in Brazil. Law taught me to read requirements closely and argue for the user. Teaching at Academy Xi taught me to make complex things easy to understand.</p>
+<p style="margin: 0; text-wrap: pretty">Away from the keyboard, you'll usually find me making stickers and paper crafts.</p>
+<a href="About.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">Read my story <span aria-hidden="true">→</span></a>
+</div>
+<svg role="img" aria-label="Illustration of a cosy desk: a laptop showing a pastel interface, a plant and a steaming mug" viewBox="0 0 520 420" style="flex: 0 1 240px; width: 240px; max-width: 100%; height: auto; margin: 0 auto">
+<path d="M70 110C120 30 260 10 360 50s150 130 120 230-150 150-270 130S20 320 30 220 40 150 70 110Z" fill="{{t.lav}}"></path>
+<circle cx="430" cy="80" r="34" fill="#FFD98A"></circle>
+<rect x="20" y="384" width="480" height="14" rx="7" fill="#E2DAF5"></rect>
+<rect x="128" y="168" width="264" height="176" rx="16" fill="#2B2540"></rect>
+<rect x="140" y="180" width="240" height="152" rx="8" fill="#FFFFFF"></rect>
+<rect x="152" y="192" width="216" height="18" rx="9" fill="#FFE1D3"></rect>
+<rect x="152" y="220" width="104" height="70" rx="10" fill="#EDE6FF"></rect>
+<rect x="264" y="220" width="104" height="70" rx="10" fill="#D6F5E8"></rect>
+<rect x="152" y="300" width="70" height="20" rx="10" fill="#6F4FD6"></rect>
+<path d="M104 344h312l-18 26H122z" fill="#CFC4E8"></path>
+<rect x="58" y="320" width="50" height="64" rx="12" fill="#BFE8D6"></rect>
+<path d="M83 322c-6-30-30-40-40-34 6 18 22 30 40 34Z" fill="#8FD3B0"></path>
+<path d="M83 322c4-36 26-50 40-42-4 22-20 36-40 42Z" fill="#7CC9A3"></path>
+<rect x="420" y="332" width="48" height="52" rx="12" fill="#FFC9B5"></rect>
+<path d="M468 344c16 0 16 26 0 26" fill="none" stroke="#FFC9B5" stroke-width="7" stroke-linecap="round"></path>
+<path d="M300 52l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="#FFB8CF"></path>
+</svg>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" aria-labelledby="exp-h" style="display: flex; flex-direction: column; gap: 12px">
+<h2 id="exp-h" style="margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: {{t.accentText}}">Experience</h2>
+<ol style="margin: 0 -20px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px">
+<li class="lf-item" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 20px; border-radius: 18px">
+<span style="flex: 0 0 150px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}; padding-top: 3px">Nov 2025 – Jan 2026</span>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35">Software Engineer · Xestro</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">Healthcare SaaS features in React and TypeScript. Migrated JSX to strongly typed TSX, refactored components around custom hooks and shared context, and built accessible Material UI layouts.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">React</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">TypeScript</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Material UI</span></div>
+</div>
+</li>
+<li class="lf-item" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 20px; border-radius: 18px">
+<span style="flex: 0 0 150px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}; padding-top: 3px">Oct 2023 – Aug 2024</span>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35">Software Engineer · Grok Academy</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">Built the Lit and TypeScript Web Component library used by 200,000+ students across 3,400 Australian schools — documented in Storybook, with 100% unit test coverage and automated accessibility tests.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Lit</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">TypeScript</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Storybook</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Vitest</span></div>
+</div>
+</li>
+<li class="lf-item" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 20px; border-radius: 18px">
+<span style="flex: 0 0 150px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}; padding-top: 3px">Sep 2021 – Apr 2023</span>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35">Software Engineer · PALO IT <span style="display: inline-block; margin-left: 6px; padding: 1px 10px; border-radius: 999px; background: {{t.mint}}; color: {{t.mintInk}}; font-size: 12.5px; font-weight: 700; vertical-align: 2px; white-space: nowrap">Promoted to mid-level in under a year</span></h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">Three client products in React, TypeScript and Next.js — digital health, insurtech and a white-label marketplace — inside cross-functional Agile teams.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">React</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Next.js</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">TypeScript</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Cypress</span></div>
+</div>
+</li>
+<li class="lf-item" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 20px; border-radius: 18px">
+<span style="flex: 0 0 150px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}; padding-top: 3px">2020 – 2022</span>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35">Frontend Instructor · Academy Xi</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">Taught and mentored 60+ aspiring developers in HTML, CSS, JavaScript and React, and wrote the exercises and assessments that made the concepts click.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Teaching</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Mentoring</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Curriculum</span></div>
+</div>
+</li>
+</ol>
+<a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.ink}}; font-weight: 700; text-underline-offset: 5px">View full résumé <span aria-hidden="true">↗</span></a>
+</section>
+
+<!-- WORK -->
+<section id="work" aria-labelledby="work-h" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="work-h" style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: {{t.accentText}}">Selected work</h2>
+<p style="margin: 0; color: {{t.muted}}">Each project comes with a small live piece you can click, tab through and break.</p>
+</div>
+
+<!-- Grok -->
+<article class="lf-item" style="margin: 0 -20px; padding: 20px; border-radius: 24px; display: flex; flex-wrap: wrap; gap: 24px 32px; align-items: center">
+<div style="flex: 1 1 300px; min-width: 0; padding: 22px; box-sizing: border-box; border-radius: 20px; background: {{t.lav}}; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: {{t.muted}}"><span>&lt;grok-chat-bubble&gt;</span><span style="padding: 2px 10px; border-radius: 999px; background: {{t.card}}; color: {{t.ink}}">Live demo</span></div>
+<div role="group" aria-labelledby="grok-q" style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; gap: 10px; align-items: flex-end">
+<span aria-hidden="true" style="flex: none; width: 30px; height: 30px; border-radius: 50%; background: #2B2540; color: #FFFFFF; display: grid; place-items: center; font-size: 12px; font-weight: 700">T</span>
+<p id="grok-q" style="margin: 0; padding: 12px 14px; border-radius: 16px 16px 16px 4px; background: {{t.card}}; font-size: 15px; line-height: 1.45">What will <code style="font-family: ui-monospace, monospace; font-size: 13.5px; padding: 1px 5px; border-radius: 4px; background: {{t.chip}}">print(3 * "ha")</code> output?</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end">
+<sc-for list="{{ answers }}" as="a" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ a.pressed }}" onClick="{{ a.pick }}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid {{ a.border }}; background: {{ a.bg }}; color: {{ a.ink }}; font: 600 15px 'Figtree', sans-serif; cursor: pointer">{{ a.label }}</button>
+</sc-for>
+</div>
+<div role="status" aria-live="polite">
+<sc-if value="{{ hasFeedback }}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 12px 14px; border-radius: 12px; background: {{ feedbackBg }}; color: {{ feedbackInk }}; font-size: 14.5px; font-weight: 600; line-height: 1.45">{{ feedback }}</p>
+</sc-if>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}">Grok Academy · Edtech</span>
+<h3 style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.2">A Web Component library for 200,000+ students</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">Educators needed to build interactive computing lessons without waiting on engineers. I built reusable chat bubbles, feedback states and info blocks in Lit, with docs generated from JSDoc.</p>
+<a href="Case.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">Read the story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+
+<!-- DanceFit -->
+<article class="lf-item" style="margin: 0 -20px; padding: 20px; border-radius: 24px; display: flex; flex-wrap: wrap; gap: 24px 32px; align-items: center">
+<div style="flex: 1 1 300px; min-width: 0; padding: 22px; box-sizing: border-box; border-radius: 20px; background: {{t.pink}}; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: {{t.muted}}"><span>Design directions</span><span style="padding: 2px 10px; border-radius: 999px; background: {{t.card}}; color: {{t.ink}}">Live demo</span></div>
+<div role="group" aria-label="Choose a design direction" style="display: flex; gap: 8px">
+<sc-for list="{{ dirs }}" as="d" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{ d.pressed }}" onClick="{{ d.pick }}" style="flex: 1; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1.5px solid {{ d.border }}; background: {{ d.bg }}; color: {{ d.ink }}; font: 600 15px 'Figtree', sans-serif; cursor: pointer">{{ d.label }}</button>
+</sc-for>
+</div>
+<div role="img" aria-label="{{ preview.alt }}" style="padding: 22px; border-radius: 16px; background: {{ preview.bg }}; color: {{ preview.ink }}; display: flex; flex-direction: column; gap: 10px; transition: background-color .3s, color .3s">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: .8">Sunshine Coast</span>
+<span style="font-family: {{ preview.font }}; font-weight: 700; font-size: 30px; line-height: 1.05">DanceFit</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="padding: 8px 16px; border-radius: 999px; background: {{ preview.btnBg }}; color: {{ preview.btnInk }}; font-size: 14px; font-weight: 700">Book a class</span>
+<span style="font-size: 13.5px; font-weight: 600">Newcomer offer</span>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}">Freelance · Client website · 2026</span>
+<h3 style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.2">A website for DanceFit Sunshine Coast</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">A single-page site for a local dance fitness studio. I designed two directions, tested them with the client, then built the chosen one with a newcomer booking offer and a live Instagram feed.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">React</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">TypeScript</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Vite</span></div>
+<a href="https://dancefitsunshinecoast.com" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">Visit the live site <span aria-hidden="true">↗</span></a>
+<a href="CaseDanceFit.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">Read the story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+
+<!-- Ceta -->
+<article class="lf-item" style="margin: 0 -20px; padding: 20px; border-radius: 24px; display: flex; flex-wrap: wrap; gap: 24px 32px; align-items: center">
+<div style="flex: 1 1 300px; min-width: 0; padding: 22px; box-sizing: border-box; border-radius: 20px; background: {{t.peach}}; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: {{t.muted}}"><span>Brave steps tracker</span><span style="padding: 2px 10px; border-radius: 999px; background: {{t.card}}; color: {{t.ink}}">Interactive sketch</span></div>
+<fieldset style="margin: 0; padding: 16px; border: 0; border-radius: 16px; background: {{t.card}}; display: flex; flex-direction: column; gap: 4px">
+<legend style="float: left; width: 100%; padding: 0 0 6px; font-size: 15px; font-weight: 700">This week's brave steps <span style="font-weight: 500; color: {{t.muted}}">(sample goals)</span></legend>
+<sc-for list="{{ goals }}" as="g" hint-placeholder-count="3">
+<label class="lf-check" style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; cursor: pointer">
+<input type="checkbox" checked="{{ g.done }}" onChange="{{ g.toggle }}" style="width: 20px; height: 20px; margin: 0; accent-color: #6F4FD6">
+<span>{{ g.label }}</span>
+</label>
+</sc-for>
+<div aria-hidden="true" style="margin-top: 8px; height: 10px; border-radius: 999px; background: {{t.chip}}; overflow: hidden"><div style="width: {{ progress }}; height: 100%; border-radius: 999px; background: #FF9F80; transition: width .4s"></div></div>
+<p role="status" style="margin: 6px 0 0; font-size: 14px; font-weight: 600; color: {{t.muted}}">{{ progressText }}</p>
+</fieldset>
+</div>
+<div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: {{t.muted}}">PALO IT · Digital health · 2023</span>
+<h3 style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.2">Helping children face fears and worries</h3>
+<p style="margin: 0; font-size: 16px; color: {{t.muted}}; text-wrap: pretty">Ten interactive therapy modules that let parents and psychologists work together to help children overcome anxiety — with goal setting, progress tracking and rewards.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Next.js</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">TypeScript</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Tailwind</span><span style="padding: 3px 12px; border-radius: 999px; background: {{t.chip}}; font-size: 13px; font-weight: 600">Jest</span></div>
+<a href="CaseCeta.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: {{t.accentText}}; font-weight: 700; text-underline-offset: 5px">Read the story <span aria-hidden="true">→</span></a>
+</div>
+</article>
+
+<!-- More work -->
+<div style="display: flex; flex-direction: column; border-top: 1px solid {{t.line}}">
+<a href="CaseCyber.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}; color: {{t.ink}}; text-decoration: none">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 17px">Replacing spreadsheets for cyber insurance</span><span style="font-size: 15px; color: {{t.muted}}">PALO IT · React interfaces for policy management and risk reporting</span></span>
+<span aria-hidden="true" style="font-size: 20px; color: {{t.accentText}}">→</span>
+</a>
+<a href="CaseNft.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}; color: {{t.ink}}; text-decoration: none">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 17px">White-label NFT marketplace</span><span style="font-size: 15px; color: {{t.muted}}">PALO IT · Reusable React components and Stripe payment flows</span></span>
+<span aria-hidden="true" style="font-size: 20px; color: {{t.accentText}}">→</span>
+</a>
+<a href="CaseLetmeask.dc.html" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid {{t.line}}; color: {{t.ink}}; text-decoration: none">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; font-size: 17px">Letmeask 2.0 <span style="margin-left: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: {{t.muted}}">PERSONAL</span></span><span style="font-size: 15px; color: {{t.muted}}">Real-time Q&amp;A rooms for content creators</span></span>
+<span aria-hidden="true" style="font-size: 20px; color: {{t.accentText}}">→</span>
+</a>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section aria-labelledby="contact-h" style="padding: clamp(28px, 4vw, 44px); border-radius: 28px; background: {{t.lav}}; display: flex; flex-direction: column; gap: 14px">
+<h2 id="contact-h" style="margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: clamp(28px, 3vw, 38px); line-height: 1.15">Hiring a frontend engineer?</h2>
+<p style="margin: 0; max-width: 520px; color: {{t.muted}}">I'm available now, based on the Sunshine Coast and happy to work remotely or hybrid.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px">
+<a href="mailto:laizeferraz@gmail.com" class="lf-btn" style="display: inline-flex; align-items: center; gap: 10px; min-height: 50px; box-sizing: border-box; padding: 0 24px; border-radius: 999px; background: {{t.accent}}; color: {{t.accentInk}}; text-decoration: none; font-weight: 700">laizeferraz@gmail.com <span aria-hidden="true">→</span></a>
+<a href="#" class="lf-btn" style="display: inline-flex; align-items: center; min-height: 50px; box-sizing: border-box; padding: 0 22px; border-radius: 999px; background: {{t.card}}; color: {{t.ink}}; text-decoration: none; font-weight: 700">Download résumé</a>
+</div>
+</section>
+
+<footer style="font-size: 14px; color: {{t.muted}}; max-width: 520px">Designed and built by Laize Ferraz with Next.js and Tailwind CSS, to meet WCAG 2.2 AA.</footer>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1440,"height":4400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const dark = s.dark === undefined ? !!this.props.dark : s.dark;
+    const still = !!s.still;
+    const focusMap = !!s.focusMap;
+
+    const light = {
+      bg: '#FCFAFF', ink: '#2B2540', muted: '#5A5470', card: '#FFFFFF', line: '#E9E3F5',
+      chip: '#F1ECFC', lav: '#EDE6FF', mint: '#D6F5E8', mintInk: '#1E4D3A', peach: '#FFE1D3', pink: '#FFE0EC',
+      accent: '#6F4FD6', accentInk: '#FFFFFF', accentText: '#5B3CC4',
+      okBg: '#D6F5E8', okInk: '#1E4D3A', noBg: '#FFE1D3', noInk: '#7A2E12',
+      shadow: '0 1px 0 #EDE8F7, 0 18px 36px -24px rgba(60,40,110,.35)'
+    };
+    const darkT = {
+      bg: '#16131E', ink: '#EEEAF7', muted: '#B6AECB', card: '#211D2C', line: '#2F2A3D',
+      chip: '#2C2639', lav: '#2A2340', mint: '#1C3329', mintInk: '#A8E6C6', peach: '#3A2620', pink: '#3A2030',
+      accent: '#B9A6F2', accentInk: '#17141F', accentText: '#C9B9FF',
+      okBg: '#1C3329', okInk: '#A8E6C6', noBg: '#3A2620', noInk: '#FFC2AE',
+      shadow: '0 18px 36px -24px rgba(0,0,0,.7)'
+    };
+    const t = dark ? darkT : light;
+
+    const mkToggle = (label, on, key) => ({
+      label: label,
+      pressed: on ? 'true' : 'false',
+      knobSide: on ? 'flex-end' : 'flex-start',
+      trackBg: on ? t.accent : t.chip,
+      knobBg: on ? t.accentInk : (dark ? '#8C84A3' : '#FFFFFF'),
+      toggle: () => {
+        const cur = this.state || {};
+        if (key === 'dark') {
+          const d = cur.dark === undefined ? !!this.props.dark : cur.dark;
+          this.setState({ dark: !d });
+        } else {
+          const next = {}; next[key] = !cur[key]; this.setState(next);
+        }
+      }
+    });
+    const toggles = [
+      mkToggle('Dark mode', dark, 'dark'),
+      mkToggle('Reduce motion', still, 'still'),
+      mkToggle('Show focus order', focusMap, 'focusMap')
+    ];
+
+    const answer = s.answer || null;
+    const answers = [
+      { id: 'a', label: 'hahaha', correct: true },
+      { id: 'b', label: 'ha ha ha', correct: false },
+      { id: 'c', label: 'An error', correct: false }
+    ].map((a) => {
+      const picked = answer === a.id;
+      return {
+        label: a.label,
+        pressed: picked ? 'true' : 'false',
+        bg: picked ? (a.correct ? t.okBg : t.noBg) : t.card,
+        ink: picked ? (a.correct ? t.okInk : t.noInk) : t.ink,
+        border: picked ? (a.correct ? t.okInk : t.noInk) : t.line,
+        correct: a.correct,
+        id: a.id,
+        pick: () => this.setState({ answer: a.id })
+      };
+    });
+    const pickedAnswer = answers.find((a) => a.id === answer);
+    const hasFeedback = !!pickedAnswer;
+    const feedback = pickedAnswer ? (pickedAnswer.correct
+      ? 'Correct — multiplying a string by a number repeats it.'
+      : 'Not quite. Multiplying a string repeats it exactly — try again.') : '';
+    const feedbackBg = pickedAnswer && pickedAnswer.correct ? t.okBg : t.noBg;
+    const feedbackInk = pickedAnswer && pickedAnswer.correct ? t.okInk : t.noInk;
+
+    const dir = s.dir || 1;
+    const dirs = [1, 2].map((n) => ({
+      label: 'Direction ' + n,
+      pressed: dir === n ? 'true' : 'false',
+      bg: dir === n ? t.ink : t.card,
+      ink: dir === n ? t.bg : t.ink,
+      border: dir === n ? t.ink : t.line,
+      pick: () => this.setState({ dir: n })
+    }));
+    const preview = dir === 1
+      ? { bg: '#FFFFFF', ink: '#5E1636', btnBg: '#C2306A', btnInk: '#FFFFFF', font: "'Young Serif', Georgia, serif", alt: 'Direction 1 preview: soft white hero with a serif DanceFit title and a pink Book a class button' }
+      : { bg: '#1E1B26', ink: '#FFF6D6', btnBg: '#FFD24A', btnInk: '#1E1B26', font: "'Figtree', sans-serif", alt: 'Direction 2 preview: dark hero with a bold sans-serif DanceFit title and a yellow Book a class button' };
+
+    const goalLabels = ['Say hello to a new classmate', 'Ask a question in class', 'Try a new food at lunch'];
+    const done = s.goals || [true, false, false];
+    const goals = goalLabels.map((label, i) => ({
+      label: label,
+      done: !!done[i],
+      toggle: () => {
+        const cur = (this.state && this.state.goals) ? this.state.goals.slice() : [true, false, false];
+        cur[i] = !cur[i];
+        this.setState({ goals: cur });
+      }
+    }));
+    const doneCount = goals.filter((g) => g.done).length;
+    const progress = Math.round((doneCount / goals.length) * 100) + '%';
+    const progressText = doneCount === goals.length
+      ? 'All 3 brave steps done — reward unlocked!'
+      : doneCount + ' of 3 brave steps done';
+
+    const prefsOpen = !!s.prefsOpen;
+    const prefsExpanded = prefsOpen ? 'true' : 'false';
+    const togglePrefs = () => this.setState({ prefsOpen: !((this.state || {}).prefsOpen) });
+    const chevronDeg = prefsOpen ? '180deg' : '0deg';
+    const onCount = (dark ? 1 : 0) + (still ? 1 : 0) + (focusMap ? 1 : 0);
+    const anyOn = onCount > 0;
+
+    const rootClass = [still ? 'lf-still' : '', focusMap ? 'lf-focusmap' : ''].join(' ');
+
+    return { t, prefsOpen, prefsExpanded, togglePrefs, chevronDeg, onCount, anyOn, toggles, answers, hasFeedback, feedback, feedbackBg, feedbackInk, dirs, preview, goals, progress, progressText, rootClass };
+  }
+}
+</script>
+</body>
+</html>

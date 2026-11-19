@@ -3,17 +3,17 @@
 This file tells Claude Code how to build and change this repo. Read it at the start of every session and follow it over your own defaults.
 
 ## Project rules
-- Tailwind CSS v4 — config lives in globals.css under @theme, do NOT create tailwind.config.ts
+- Tailwind CSS v4.3 — no tailwind.config.ts. Tokens, `@theme`, `@custom-variant motion-ok` and base styles all live in `src/styles/tokens.css`, imported by `globals.css` right after `@import "tailwindcss"`. Don't define tokens anywhere else.
 - Server Components by default; "use client" only at the leaf that needs it
 - Run `npm run build` before saying a change is done 
 
 ## The project
 
-The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Sunshine Coast, QLD, who is looking for a frontend role at a product company. The site must get noticed by recruiters and hiring managers. It is also proof of her strengths: **accessibility, performance and clear writing**.
+The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Sunshine Coast, QLD, who is looking for a frontend role at a product company or consultancy. The site must get noticed by recruiters and hiring managers. It is also proof of her strengths: **accessibility, performance and clear writing**.
 
 - **Audience:** recruiters skimming on a phone, and hiring managers or senior engineers reading on a desktop. Check everything on mobile first.
 - **Approach:** agile. Launch a small MVP fast, then improve it one project at a time. Never block a launch on content that isn't ready.
-- **Hosting:** Vercel, at https://www.laizeferraz.com. This replaces the current site on the same domain.
+- **Hosting:** Vercel, at https://laizeferraz.com (the main domain; www redirects to it). This replaces the current site on the same domain.
 - **Design source:** "Option D · Clear & personal" in her Claude Design file *Laize Ferraz — Portfolio · Option D*. Exported copies live in `design/` (see "Design").
   - When the design and this file disagree on accessibility, SEO or content, this file wins. Flag the difference instead of copying the design.
   - Earlier options (A and C) are retired. Ignore them.
@@ -23,7 +23,7 @@ The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Suns
 - **Name and title:** Laize Ferraz, Frontend Software Engineer. 4+ years across healthcare SaaS, edtech and consulting.
 - **Focus:** React and TypeScript, accessible interfaces, and the component libraries and design systems behind them.
 - **Status:** available now. Australian citizen. Based on the Sunshine Coast, QLD. Open to remote or hybrid work.
-- **Background:** started with a 486 computer at 15 and taught herself. Practised law in Brazil, then moved to Australia and retrained as a software engineer. Outside work: stickers and paper crafts.
+- **Background:** started with a 486 computer at 15 and taught herself. Practised law in Brazil, then moved to Australia and retrained as a software engineer. Outside work: dancing and volleyball (her favourites), plus stickers and paper crafts.
 - **Experience** (exact dates from the design):
   - Xestro, Software Engineer, Nov 2025 – Jan 2026
   - Grok Academy, Software Engineer, Oct 2023 – Aug 2024
@@ -35,7 +35,7 @@ The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Suns
 - **Education:** Cert IV Web-based Technologies (TAFE Sydney, 2019) and Bachelor of Law (Tiradentes University).
 - **Languages:** English (fluent), Portuguese (native).
 - **Highlights:**
-  - 200,000+ students in 3,400 Australian schools use components she built.
+  - She built the component library for Grok Academy, an edtech platform used by 200,000+ students in 3,400 Australian schools. Never claim the students used her components: content creators chose which ones went into courses.
   - 100% unit test coverage on the Grok library.
   - 60+ developers taught and mentored.
 - **Contact:**
@@ -77,8 +77,8 @@ Add permanent redirects in `next.config`:
 ### Layout
 
 - Max-width 1200 px, side padding `clamp(20px, 5vw, 48px)`.
-- **960 px and up:** two columns, `minmax(280px, 360px)` and `1fr`, with a 40–72 px gap. The sidebar is `position: sticky; top: 0`, with `max-height: 100vh` and its own scrolling.
-- **640–959 px:** the sidebar sits above the content, with its two blocks side by side.
+- **1024 px and up:** two columns, `minmax(280px, 360px)` and `1fr`, with a 40–72 px gap. The sidebar is `position: sticky; top: 0`, with `max-height: 100vh` and its own scrolling.
+- **640–1023 px:** the sidebar sits above the content as a top header in two top-aligned columns: SidebarIntro, SidebarLinks and DisplaySettings on the left; SectionNav on the right, right-aligned, with each bar after its label (the label slides left as the bar grows). On phones and in the 1024 px+ sidebar the order is intro, links, nav, Display settings, and the bar sits before the label. The tablet grid places Display settings in row 2 under the intro, so it reads row by row in DOM order.
 - **Below 640 px:** everything stacks.
 
 ### Sidebar (`<header>`)
@@ -150,7 +150,7 @@ Section H2s are small uppercase labels in `accentText`. Card titles and roles ar
 | Story sprint | Slug | Project | Meta line | Notes |
 | --- | --- | --- | --- | --- |
 | 1 | `cyber-insurance-platform` | Replacing spreadsheets for cyber insurance | PALO IT · Insurtech · Sep 2021 – Apr 2022 | Client stays anonymous ("a global cyber reinsurer"). Illustrations only. Copy is complete in the design. |
-| 2 | `grok-web-components` | A Web Component library for 200,000+ students | Grok Academy · Edtech · Oct 2023 – Aug 2024 | Featured. Live Storybook: https://groklearning.github.io/grok-web-components/ |
+| 2 | `grok-web-components` | A Web Component library for an edtech platform with 200,000+ students | Grok Academy · Edtech · Oct 2023 – Aug 2024 | Featured. Live Storybook: https://groklearning.github.io/grok-web-components/ |
 | 3 | `dancefit-sunshine-coast` | A website for DanceFit Sunshine Coast | Freelance · Client website · 2026 | Live at https://dancefitsunshinecoast.com. The client agreed to be named and linked; screenshots are fine. |
 | 4 | `ceta` | Helping children face fears and worries | PALO IT · Digital health · 2023 | Private MVP: illustrations only. |
 | 5 | `white-label-marketplace` | A white-label NFT marketplace | PALO IT · Marketplace · 2022 | Frame it around theming and payments, not NFTs. Not online: illustrations only. |
@@ -203,7 +203,8 @@ Section H2s are small uppercase labels in `accentText`. Card titles and roles ar
 
 ### Reference files
 
-`design/` holds the exported Option D files:
+`design/` holds the design reference and the exported Option D files:
+- `DESIGN.md`: @design/DESIGN.md. Components, type scale, spacing, motion and the accessibility fixes. Read the matching section before building a component.
 - `Main.dc.html`: home, light, desktop
 - `ClearDark…`: home, dark
 - `Case.dc.html`: the shared story template and all story data
@@ -212,14 +213,15 @@ Read them for layout, spacing, illustrations, demo behaviour and copy. Don't cop
 
 ### Tokens
 
-Define these once as CSS variables, switched by `[data-theme="dark"]`, and expose them to Tailwind. Never hard-code hex values in components.
+They're already defined in `src/styles/tokens.css` (CSS variables switched by `[data-theme="dark"]`, exposed to Tailwind as `bg-card`, `text-muted`, `bg-lav`, `text-mint-ink`…). That file is the source of truth; this table mirrors it. Never hard-code hex values in components.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
 | `bg` | #FCFAFF | #16131E | Page background |
 | `card` | #FFFFFF | #211D2C | Cards, hover background |
-| `line` | #E9E3F5 | #2F2A3D | Borders, dividers |
-| `chip` | #F1ECFC | #2C2639 | Tags, toggle track |
+| `line` | #E9E3F5 | #2F2A3D | Decorative dividers only (1.2:1, not enough for controls) |
+| `line-strong` | #857D9E | #8A82A3 | Control borders, toggle track when off (3:1+, WCAG 1.4.11) |
+| `chip` | #F1ECFC | #2C2639 | Tags, inline code, lesson boxes |
 | `ink` | #2B2540 | #EEEAF7 | Headings, main text |
 | `muted` | #5A5470 | #B6AECB | Paragraphs, meta lines |
 | `accent` | #6F4FD6 | #B9A6F2 | Primary buttons, toggle on |
@@ -233,7 +235,7 @@ Define these once as CSS variables, switched by `[data-theme="dark"]`, and expos
 | `mint` / `mint-ink` | #D6F5E8 / #1E4D3A | #1C3329 / #A8E6C6 | Letmeask panel, Impact panel, PALO IT badge |
 | `ok-bg` / `ok-ink` | #D6F5E8 / #1E4D3A | #1C3329 / #A8E6C6 | Correct-answer feedback |
 | `no-bg` / `no-ink` | #FFE1D3 / #7A2E12 | #3A2620 / #FFC2AE | Wrong-answer feedback |
-| `focus` | #8B6CF0 | #8B6CF0 | Focus ring (check it on dark) |
+| `focus` | #8B6CF0 | #8B6CF0 | Focus ring (checked: 3.2:1 or more on every light and dark surface) |
 
 - Pastels are backgrounds only. Text on them uses `ink`, `muted` or the matching `-ink`.
 - The DanceFit preview colours (Direction 1: white, #5E1636 and pink #C2306A; Direction 2: #1E1B26, #FFF6D6 and yellow #FFD24A) belong to the demo. Keep them inside that component.
@@ -258,11 +260,16 @@ Load with `next/font/google`: self-hosted, subset, `display: swap`.
 
 Minimal:
 - A short "rise" on load for the sidebar text.
+- Two pulses on the availability dot on load (`animate-ping-once`, 3.5 s in total, then it stops).
 - The nav bar width transition.
 - Hover lifts.
 - Colour transitions in the demos.
 
-There are no looping animations. Keep it that way: it avoids WCAG 2.2.2.
+There are no looping animations. Keep it that way: it avoids WCAG 2.2.2. Anything that moves on its own must stop within 5 seconds.
+
+- Write all motion with the `motion-ok:` variant (`motion-ok:animate-rise`, `motion-ok:transition`). It only applies when the OS allows motion and the Reduce motion setting is off.
+- Never use `!important`. `tokens.css` has an unlayered safety net that stops stray motion without it.
+- Keep motion in classes, not inline `style`.
 
 ## Accessibility: WCAG 2.2 AA (required, not optional)
 
@@ -272,11 +279,11 @@ Treat any failure as a bug that blocks the task.
 
 Display settings is a signature feature ("These really work — accessibility is how I build, not a checkbox"). Build it carefully: it's the thing interviewers will try.
 
-- **The disclosure:** a `<button aria-expanded>` labelled "Display settings", with a count badge such as "2 on". It opens a `role="group"` with `aria-label="Display settings"`.
-- **Each toggle:** a `<button aria-pressed>` whose visible text is its name. The switch graphic is `aria-hidden`.
+- **The disclosure:** a `<button aria-expanded>` labelled "Display settings", bordered with `line-strong`, with a count badge such as "2 on". It opens a `role="group"` with `aria-label="Display settings"`.
+- **Each toggle:** a `<button aria-pressed>` whose visible text is its name. The switch graphic is `aria-hidden`. Track: `line-strong` when off, `accent` when on.
   1. **Dark mode:** sets `data-theme`. Defaults to `prefers-color-scheme`.
-  2. **Reduce motion:** adds a class that turns off all animation and transitions. Defaults to on when `prefers-reduced-motion: reduce`.
-  3. **Show focus order:** outlines every focusable element in the content and shows its number in the tab order.
+  2. **Reduce motion:** sets `data-motion="reduce"` on `<html>`, which turns off all animation and transitions. Defaults to on when `prefers-reduced-motion: reduce`.
+  3. **Show focus order:** sets `data-focus-map` on `<html>`, which outlines every focusable element and shows its number in the tab order (styles are in `tokens.css`).
      - Use a CSS counter on `a`, `button` and checkbox labels in DOM order, as in the design.
      - The numbers are decorative (`::after` content in a pseudo-element). Make sure the DOM order matches the visual order, so the numbers are honest.
 - Save all three in `localStorage`, and apply them before first paint with a tiny inline script.
@@ -358,9 +365,9 @@ Display settings is a signature feature ("These really work — accessibility is
 ### Metadata
 
 - Use the Next.js Metadata API.
-- Set `metadataBase` to `https://www.laizeferraz.com`, a title template `%s | Laize Ferraz`, and a canonical URL on every page.
-- **Home title:** `Laize Ferraz | Frontend Engineer, React & Accessibility`.
-- **Home description:** "Frontend engineer on the Sunshine Coast building accessible React interfaces and component libraries. 4+ years in healthcare SaaS, edtech and consulting." She approves the final wording of both.
+- Set `metadataBase` to `https://laizeferraz.com`, a title template `%s | Laize Ferraz`, and a canonical URL on every page.
+- **Home title (approved):** `Laize Ferraz | Frontend Engineer, React & Accessibility`. It says "Frontend Engineer", not "Frontend Software Engineer", to stay under 60 characters.
+- **Home description (approved):** "Frontend engineer building accessible React interfaces and component libraries, from healthcare SaaS to edtech. Available now in Australia, remote or hybrid." Both live in `src/content/site.ts`. Update "Available now" when she accepts a role.
 - **Story pages:** the title is the project title. The description is its summary.
 
 ### Structured data
@@ -397,6 +404,7 @@ Display settings is a signature feature ("These really work — accessibility is
   - Demos go in `src/components/demos/`.
   - Illustrations go in `src/components/illustrations/`.
   - Content goes in `src/content/`.
+- **Prefer Tailwind's scale classes to arbitrary pixel values.** Tailwind v4's spacing scale accepts any multiple of 0.25rem (4 px), so write `w-10.5` (42 px), `size-4.5` (18 px), `p-0.75` (3 px) and `min-h-12.5` (50 px), not `w-[42px]`. They are rem-based, so they scale with text size. Use an arbitrary value only when no scale class exists (e.g. a 1.5 px border), and add a short comment if the reason isn't obvious.
 - Use Tailwind utilities and tokens, with no inline styles. Obvious shared components:
   - SectionLabel
   - Tag
@@ -413,6 +421,7 @@ Display settings is a signature feature ("These really work — accessibility is
 - Work on **one task at a time**, matching a card on her Notion "MVP Launch Board". Keep each change small enough to review in one sitting.
 - Explain what you changed and why in plain language. Point out any accessibility or performance trade-off, and anywhere you departed from the design.
 - Ask before committing, pushing, deleting files or changing the deploy setup.
+- **Branches and PRs:** branch each task off `dev` (e.g. `feature/<short-name>`) and open its PR against `dev` (`gh pr create --base dev`). Never open a PR against `main` or merge into it.
 - If a request conflicts with this file (for example, it would break WCAG 2.2 AA), say so and suggest an alternative.
 
 ## Definition of done
@@ -422,7 +431,7 @@ Display settings is a signature feature ("These really work — accessibility is
 - Works by keyboard, with a visible focus ring.
 - Contrast passes in both themes.
 - All Display settings work.
-- Matches the design at 320 px, 640–959 px and 960 px and up.
+- Matches the design at 320 px, 640–1023 px and 1024 px and up.
 - No placeholder is left that isn't listed below.
 
 **For the MVP launch**
@@ -437,7 +446,6 @@ Display settings is a signature feature ("These really work — accessibility is
 - [ ] Name of the second bootcamp (2021), and whether she was an instructor or a mentor at each
 - [ ] Portrait photo
 - [ ] Updated résumé PDF and its file size
-- [ ] Final home title and meta description wording
 - [ ] Exported Option D files for `design/`
 - [ ] Story gaps, one sprint at a time:
   - team sizes (Grok, Ceta, NFT)
@@ -450,4 +458,4 @@ Display settings is a signature feature ("These really work — accessibility is
 ## After launch
 
 - Publish one story per sprint in the projects table order. Each one adds a new indexable page, which helps search more than polishing the home page does.
-- After a few weeks live, check Search Console for which searches bring visitors, and adjust titles and descriptions to match.  
+- After a few weeks live, check Search Console for which searches bring visitors, and adjust titles and descriptions to match.

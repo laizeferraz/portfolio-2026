@@ -1,11 +1,80 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { AboutContent } from "@/components/AboutContent";
+import { ContactPanel } from "@/components/ContactPanel";
+import { ExperienceList } from "@/components/ExperienceList";
+import { HomeSection } from "@/components/HomeSection";
+import { PersonJsonLd } from "@/components/PersonJsonLd";
+import { Sidebar } from "@/components/Sidebar";
+import { WorkSection } from "@/components/WorkSection";
+import {
+  HOME_DESCRIPTION,
+  HOME_SECTIONS,
+  HOME_TITLE,
+  type HomeSectionId,
+  NAME,
+} from "@/content/site";
+
+// The title and description come from the layout's defaults. The canonical
+// and Open Graph tags live here, not in the layout, so story pages don't
+// inherit the home page's. The OG image comes from opengraph-image.tsx.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "profile",
+    url: "/",
+    siteName: NAME,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    locale: "en_AU",
+    firstName: "Laize",
+    lastName: "Ferraz",
+  },
+};
+
+/** What goes inside each home section, below its H2. */
+const SECTION_CONTENT: Record<HomeSectionId, ReactNode> = {
+  about: <AboutContent />,
+  experience: <ExperienceList />,
+  work: <WorkSection />,
+};
+
+/**
+ * Home: sidebar + content. One column on phones; the sidebar's two
+ * blocks sit side by side from 640px; two columns from 1024px (`split:`).
+ */
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 flex-col items-center justify-center gap-4 p-8">
-        <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-50">
-          Hello World!
-        </h1>
-      </main>
+    <div className="mx-auto w-full max-w-home px-[clamp(20px,5vw,48px)] split:grid split:grid-cols-[minmax(280px,360px)_minmax(0,1fr)] split:gap-x-[clamp(40px,5vw,72px)]">
+      <PersonJsonLd />
+      <Sidebar />
+
+      <div className="flex min-w-0 flex-col gap-[clamp(72px,9vw,112px)] pt-[clamp(40px,7vw,96px)] pb-12">
+        <main
+          id="content"
+          className="flex flex-col gap-[clamp(72px,9vw,112px)]"
+        >
+          {HOME_SECTIONS.map((section) => (
+            <HomeSection
+              key={section.id}
+              id={section.id}
+              heading={section.heading}
+            >
+              {SECTION_CONTENT[section.id]}
+            </HomeSection>
+          ))}
+
+          <ContactPanel
+            heading="Hiring a frontend engineer?"
+            text="I'm available now, based on the Sunshine Coast and happy to work remotely or hybrid."
+          />
+        </main>
+
+        <footer className="max-w-130 text-sm text-muted">
+          Designed and built by Laize Ferraz with Next.js and Tailwind CSS, to
+          meet WCAG 2.2 AA.
+        </footer>
+      </div>
     </div>
   );
 }
