@@ -4,6 +4,16 @@
 /** The live domain, with no trailing slash. Sitemap, robots and metadata use it. */
 export const SITE_URL = "https://laizeferraz.com";
 
+/**
+ * Home page title and meta description, approved by Laize. The title stays
+ * under 60 characters and the description under 160, so Google shows both
+ * in full.
+ */
+export const HOME_TITLE =
+  "Laize Ferraz | Frontend Engineer, React & Accessibility";
+export const HOME_DESCRIPTION =
+  "Frontend engineer building accessible React interfaces and component libraries, from healthcare SaaS to edtech. Available now in Australia, remote or hybrid.";
+
 export const NAME = "Laize Ferraz";
 export const JOB_TITLE = "Frontend Software Engineer";
 export const TAGLINE =

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { AboutContent } from "@/components/AboutContent";
 import { ContactPanel } from "@/components/ContactPanel";
@@ -6,6 +7,12 @@ import { HomeSection } from "@/components/HomeSection";
 import { Sidebar } from "@/components/Sidebar";
 import { WorkSection } from "@/components/WorkSection";
 import { HOME_SECTIONS, type HomeSectionId } from "@/content/site";
+
+// The title and description come from the layout's defaults. The canonical
+// lives here, not in the layout, so story pages don't inherit "/".
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 /** What goes inside each home section, below its H2. */
 const SECTION_CONTENT: Record<HomeSectionId, ReactNode> = {
