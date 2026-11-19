@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     template: `%s | ${NAME}`,
   },
   description: HOME_DESCRIPTION,
+  // X shows the large Open Graph image instead of a small thumbnail.
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

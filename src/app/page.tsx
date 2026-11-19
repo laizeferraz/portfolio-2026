@@ -4,14 +4,32 @@ import { AboutContent } from "@/components/AboutContent";
 import { ContactPanel } from "@/components/ContactPanel";
 import { ExperienceList } from "@/components/ExperienceList";
 import { HomeSection } from "@/components/HomeSection";
+import { PersonJsonLd } from "@/components/PersonJsonLd";
 import { Sidebar } from "@/components/Sidebar";
 import { WorkSection } from "@/components/WorkSection";
-import { HOME_SECTIONS, type HomeSectionId } from "@/content/site";
+import {
+  HOME_DESCRIPTION,
+  HOME_SECTIONS,
+  HOME_TITLE,
+  type HomeSectionId,
+  NAME,
+} from "@/content/site";
 
 // The title and description come from the layout's defaults. The canonical
-// lives here, not in the layout, so story pages don't inherit "/".
+// and Open Graph tags live here, not in the layout, so story pages don't
+// inherit the home page's. The OG image comes from opengraph-image.tsx.
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  openGraph: {
+    type: "profile",
+    url: "/",
+    siteName: NAME,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    locale: "en_AU",
+    firstName: "Laize",
+    lastName: "Ferraz",
+  },
 };
 
 /** What goes inside each home section, below its H2. */
@@ -28,6 +46,7 @@ const SECTION_CONTENT: Record<HomeSectionId, ReactNode> = {
 export default function Home() {
   return (
     <div className="mx-auto w-full max-w-home px-[clamp(20px,5vw,48px)] split:grid split:grid-cols-[minmax(280px,360px)_minmax(0,1fr)] split:gap-x-[clamp(40px,5vw,72px)]">
+      <PersonJsonLd />
       <Sidebar />
 
       <div className="flex min-w-0 flex-col gap-[clamp(72px,9vw,112px)] pt-[clamp(40px,7vw,96px)] pb-12">
