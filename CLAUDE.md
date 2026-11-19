@@ -9,7 +9,7 @@ This file tells Claude Code how to build and change this repo. Read it at the st
 
 ## The project
 
-The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Sunshine Coast, QLD, who is looking for a frontend role at a product company. The site must get noticed by recruiters and hiring managers. It is also proof of her strengths: **accessibility, performance and clear writing**.
+The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Sunshine Coast, QLD, who is looking for a frontend role at a product company or consultancy. The site must get noticed by recruiters and hiring managers. It is also proof of her strengths: **accessibility, performance and clear writing**.
 
 - **Audience:** recruiters skimming on a phone, and hiring managers or senior engineers reading on a desktop. Check everything on mobile first.
 - **Approach:** agile. Launch a small MVP fast, then improve it one project at a time. Never block a launch on content that isn't ready.
@@ -366,8 +366,8 @@ Display settings is a signature feature ("These really work — accessibility is
 
 - Use the Next.js Metadata API.
 - Set `metadataBase` to `https://laizeferraz.com`, a title template `%s | Laize Ferraz`, and a canonical URL on every page.
-- **Home title:** `Laize Ferraz | Frontend Engineer, React & Accessibility`.
-- **Home description:** "Frontend engineer on the Sunshine Coast building accessible React interfaces and component libraries. 4+ years in healthcare SaaS, edtech and consulting." She approves the final wording of both.
+- **Home title (approved):** `Laize Ferraz | Frontend Engineer, React & Accessibility`. It says "Frontend Engineer", not "Frontend Software Engineer", to stay under 60 characters.
+- **Home description (approved):** "Frontend engineer building accessible React interfaces and component libraries, from healthcare SaaS to edtech. Available now in Australia, remote or hybrid." Both live in `src/content/site.ts`. Update "Available now" when she accepts a role.
 - **Story pages:** the title is the project title. The description is its summary.
 
 ### Structured data
@@ -446,7 +446,6 @@ Display settings is a signature feature ("These really work — accessibility is
 - [ ] Name of the second bootcamp (2021), and whether she was an instructor or a mentor at each
 - [ ] Portrait photo
 - [ ] Updated résumé PDF and its file size
-- [ ] Final home title and meta description wording
 - [ ] Exported Option D files for `design/`
 - [ ] Story gaps, one sprint at a time:
   - team sizes (Grok, Ceta, NFT)
