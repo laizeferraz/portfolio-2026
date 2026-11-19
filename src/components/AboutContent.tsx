@@ -15,10 +15,8 @@ export function AboutContent() {
           of the screen. For 4+ years I've built{" "}
           <strong className={strong}>React and TypeScript</strong> interfaces
           across healthcare SaaS, edtech and consulting — lately with a focus on{" "}
-          <strong className={strong}>
-            component libraries and design systems
-          </strong>
-          .
+          <strong className={strong}>component libraries</strong>, and the
+          design tokens and theming behind them.
         </p>
         <p className="text-pretty">
           Before code, I was a lawyer in Brazil. Law taught me to read
