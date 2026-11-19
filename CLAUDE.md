@@ -21,7 +21,7 @@ The new portfolio for **Laize Ferraz**, a Frontend Software Engineer on the Suns
 ## Facts about Laize (use these, don't invent others)
 
 - **Name and title:** Laize Ferraz, Frontend Software Engineer. 4+ years across healthcare SaaS, edtech and consulting.
-- **Focus:** React and TypeScript, accessible interfaces, and the component libraries and design systems behind them.
+- **Focus:** React and TypeScript, accessible interfaces, and the component libraries behind them, including design tokens and theming (Grok's CSS custom-property palette documented in Storybook; part of the white-label marketplace's themes). Don't claim "design systems": she implemented tokens and components, not the guidelines or governance.
 - **Status:** available now. Australian citizen. Based on the Sunshine Coast, QLD. Open to remote or hybrid work.
 - **Background:** started with a 486 computer at 15 and taught herself. Practised law in Brazil, then moved to Australia and retrained as a software engineer. Outside work: dancing and volleyball (her favourites), plus stickers and paper crafts.
 - **Experience** (exact dates from the design):
