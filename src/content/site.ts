@@ -24,7 +24,7 @@ export const AVAILABILITY =
 /** Her photo in /public. The JSON-LD `image` will reuse it. */
 export const PORTRAIT_SRC = "/portfolio-photo.avif";
 
-export const EMAIL = "laizeferraz@gmail.com";
+export const EMAIL = "hi@laizeferraz.com";
 export const MAILTO = `mailto:${EMAIL}`;
 
 export const LINKEDIN_URL = "https://www.linkedin.com/in/laize-ferraz/";
